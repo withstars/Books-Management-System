@@ -65,65 +65,76 @@
         </div>
     </div>
 </nav>
-<h2 style="position: absolute;top:8%;left: 42%">增 加 图 书</h2>
-<form action="book_add_do.html" method="post" id="addbook" style="position: absolute;top: 20%;left: 39%">
 
-    <div class="input-group">
-        <span  class="input-group-addon">图书名</span>
-        <input type="text" class="form-control" name="name" id="name">
+<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 10%">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">图书添加</h3>
+        </div>
+        <div class="panel-body">
+            <form action="book_add_do.html" method="post" id="addbook" >
+
+                <div class="input-group">
+                    <span  class="input-group-addon">图书名</span>
+                    <input type="text" class="form-control" name="name" id="name">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">作者</span>
+                    <input type="text" class="form-control" name="author" id="author">
+                </div>
+                <div class="input-group">
+                    <span  class="input-group-addon">出版社</span>
+                    <input type="text" class="form-control" name="publish" id="publish" >
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">ISBN</span>
+                    <input type="text" class="form-control" name="isbn" id="isbn">
+                </div>
+                <div class="input-group">
+                    <span  class="input-group-addon">简介</span>
+                    <input type="text" class="form-control" name="introduction" id="introduction">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">语言</span>
+                    <input type="text" class="form-control" name="language" id="language">
+                </div>
+                <div class="input-group">
+                    <span  class="input-group-addon">价格</span>
+                    <input type="text" class="form-control" name="price"  id="price">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">出版日期</span>
+                    <input type="text" class="form-control" name="pubdate" id="pubdate" >
+                </div>
+                <div class="input-group">
+                    <span  class="input-group-addon">分类号</span>
+                    <input type="text" class="form-control" name="classId" id="classId">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">书架号</span>
+                    <input type="text" class="form-control" name="pressmark" id="pressmark" >
+                </div>
+                <div class="input-group">
+                    <span  class="input-group-addon">状态</span>
+                    <input type="text" class="form-control" name="state"  id="state">
+                </div>
+                <input type="submit" value="添加" class="btn default" class="text-left">
+                <script>
+                    function mySubmit(flag){
+                        return flag;
+                    }
+                    $("#addbook").submit(function () {
+                        if($("#name").val()==''||$("#author").val()==''||$("#publish").val()==''||$("#isbn").val()==''||$("#introduction").val()==''||$("#language").val()==''||$("#price").val()==''||$("#pubdate").val()==''||$("#classId").val()==''||$("#pressmark").val()==''||$("#state").val()==''){
+                            alert("请填入完整图书信息！");
+                            return mySubmit(false);
+                        }
+                    })
+                </script>
+            </form>
+        </div>
     </div>
-    <div class="input-group">
-        <span class="input-group-addon">作者</span>
-        <input type="text" class="form-control" name="author" id="author">
-    </div>
-    <div class="input-group">
-        <span  class="input-group-addon">出版社</span>
-        <input type="text" class="form-control" name="publish" id="publish" >
-    </div>
-    <div class="input-group">
-        <span class="input-group-addon">ISBN</span>
-        <input type="text" class="form-control" name="isbn" id="isbn">
-    </div>
-    <div class="input-group">
-        <span  class="input-group-addon">简介</span>
-        <input type="text" class="form-control" name="introduction" id="introduction">
-    </div>
-    <div class="input-group">
-        <span class="input-group-addon">语言</span>
-        <input type="text" class="form-control" name="language" id="language">
-    </div>
-    <div class="input-group">
-        <span  class="input-group-addon">价格</span>
-        <input type="text" class="form-control" name="price"  id="price">
-    </div>
-    <div class="input-group">
-        <span class="input-group-addon">出版日期</span>
-        <input type="text" class="form-control" name="pubdate" id="pubdate" >
-    </div>
-    <div class="input-group">
-        <span  class="input-group-addon">分类号</span>
-        <input type="text" class="form-control" name="classId" id="classId">
-    </div>
-    <div class="input-group">
-        <span class="input-group-addon">书架号</span>
-        <input type="text" class="form-control" name="pressmark" id="pressmark" >
-    </div>
-    <div class="input-group">
-        <span  class="input-group-addon">状态</span>
-        <input type="text" class="form-control" name="state"  id="state">
-    </div>
-    <input type="submit" value="添加" class="btn default">
-    <script>
-        function mySubmit(flag){
-            return flag;
-        }
-        $("#addbook").submit(function () {
-            if($("#name").val()==''||$("#author").val()==''||$("#publish").val()==''||$("#isbn").val()==''||$("#introduction").val()==''||$("#language").val()==''||$("#price").val()==''||$("#pubdate").val()==''||$("#classId").val()==''||$("#pressmark").val()==''||$("#state").val()==''){
-                alert("请填入完整图书信息！");
-                return mySubmit(false);
-            }
-        })
-    </script>
-</form>
+
+</div>
+
 </body>
 </html>

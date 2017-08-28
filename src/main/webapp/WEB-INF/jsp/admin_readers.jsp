@@ -1,11 +1,3 @@
-<%@ page import="com.book.domain.ReaderInfo" %>
-<%@ page import="java.util.ArrayList" %><%--
-  Created by IntelliJ IDEA.
-  User: 君行天下
-  Date: 2017/7/26
-  Time: 19:39
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -84,24 +76,18 @@
     </tr>
     </thead>
     <tbody>
-    <%
-        ArrayList<ReaderInfo> readers=(ArrayList<ReaderInfo>)session.getAttribute("allReaders");
-        for(int i=0;i<readers.size();i++){
-            ReaderInfo reader=readers.get(i);
-    %>
+<c:forEach items="${readers}" var="reader">
     <tr>
-        <td><%= reader.getReaderId() %></td>
-        <td><%= reader.getName() %></td>
-        <td><%= reader.getSex() %></td>
-        <td><%= reader.getBirth() %></td>
-        <td><%= reader.getAddress() %></td>
-        <td><%= reader.getTelcode() %></td>
-        <td><a href="reader_delete.html?readerId=<%= reader.getReaderId()  %>">删除</a></td>
-        <td><a href="reader_update.html?readerId=<%= reader.getReaderId()  %>">修改</a></td>
+        <td><c:out value="${reader.readerId}"></c:out></td>
+        <td><c:out value="${reader.name}"></c:out></td>
+        <td><c:out value="${reader.sex}"></c:out></td>
+        <td><c:out value="${reader.birth}"></c:out></td>
+        <td><c:out value="${reader.address}"></c:out></td>
+        <td><c:out value="${reader.telcode}"></c:out></td>
+        <td><a href="reader_delete.html?readerId=<c:out value="${reader.readerId}"></c:out>">删除</a></td>
+        <td><a href="reader_update.html?readerId=<c:out value="${reader.readerId}"></c:out>">修改</a></td>
     </tr>
-    <%
-        }
-    %>
+</c:forEach>
     </tbody>
 </table>
 

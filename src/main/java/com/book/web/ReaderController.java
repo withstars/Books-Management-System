@@ -20,10 +20,11 @@ public class ReaderController {
     }
 
     @RequestMapping("allreaders.html")
-    public ModelAndView allBooks(HttpServletRequest request){
+    public ModelAndView allBooks(){
         ArrayList<ReaderInfo> readers=readerInfoService.readerInfos();
-        request.getSession().setAttribute("allReaders",readers);
-        return new ModelAndView("allReaders");
+        ModelAndView modelAndView=new ModelAndView("admin_readers");
+        modelAndView.addObject("readers",readers);
+        return modelAndView;
     }
 
     @RequestMapping("reader_delete.html")
@@ -32,9 +33,9 @@ public class ReaderController {
         boolean success=readerInfoService.deleteReaderInfo(readerId);
 
         if(success){
-            return new ModelAndView("allReaders","info","删除成功！");
+            return new ModelAndView("admin_readers","info","删除成功！");
         }else {
-            return new ModelAndView("allReaders","info","删除失败！");
+            return new ModelAndView("admin_readers","info","删除失败！");
         }
 
     }

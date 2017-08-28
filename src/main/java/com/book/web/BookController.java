@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
@@ -25,17 +26,17 @@ public class BookController {
         if (exist){
             ArrayList<Book> books = bookService.queryBook(bookCommand.getSearchWord());
             request.getSession().setAttribute("allBooks", books);
-            ModelAndView modelAndView = new ModelAndView("allBooks");
+            ModelAndView modelAndView = new ModelAndView("admin_books");
             return modelAndView;
         }
         else{
-            return new ModelAndView("allBooks","info","没有匹配的图书");
+            return new ModelAndView("admin_books","info","没有匹配的图书");
         }
     }
     @RequestMapping("/allbooks.html")
     public ModelAndView allBook(){
         ArrayList<Book> books=bookService.getAllBooks();
-        ModelAndView modelAndView=new ModelAndView("allBooks");
+        ModelAndView modelAndView=new ModelAndView("admin_books");
         modelAndView.addObject("books",books);
         return modelAndView;
     }
@@ -43,11 +44,16 @@ public class BookController {
     public ModelAndView deleteBook(HttpServletRequest request){
         long bookId=Integer.parseInt(request.getParameter("bookId"));
         int res=bookService.deleteBook(bookId);
+        ArrayList<Book> books=bookService.getAllBooks();
         if (res==1){
-            ModelAndView modelAndView = new ModelAndView("allBooks","info","删除成功！");
+            ModelAndView modelAndView = new ModelAndView("admin_books");
+            modelAndView.addObject("succ","删除成功！");
+            modelAndView.addObject("books",books);
             return modelAndView;
         }else {
-            ModelAndView modelAndView = new ModelAndView("allBooks","info","删除失败！");
+            ModelAndView modelAndView = new ModelAndView("admin_books");
+            modelAndView.addObject("error","删除失败！");
+            modelAndView.addObject("books",books);
             return modelAndView;
         }
     }
@@ -75,13 +81,20 @@ public class BookController {
         book.setPressmark(bookAddCommand.getPressmark());
         book.setLanguage(bookAddCommand.getLanguage());
 
-        boolean succ=bookService.addBook(book);
 
+        boolean succ=bookService.addBook(book);
+        ArrayList<Book> books=bookService.getAllBooks();
         if (succ){
-            return new ModelAndView("allBooks","info","图书添加成功");
+            ModelAndView modelAndView= new ModelAndView("admin_books");
+            modelAndView.addObject("succ","图书添加成功");
+            modelAndView.addObject("books",books);
+            return modelAndView;
         }
         else {
-            return new ModelAndView("allBooks","info","图书添加失败");
+            ModelAndView modelAndView= new ModelAndView("admin_books");
+            modelAndView.addObject("error","图书添加失败");
+            modelAndView.addObject("books",books);
+            return modelAndView;
         }
     }
 

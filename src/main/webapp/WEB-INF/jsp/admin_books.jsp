@@ -91,9 +91,25 @@
         })
     </script>
 </div>
-<c:if test="${!empty info}">
-    <script>alert("${info}");window.location.href="allbooks.html"</script>
+<c:if test="${!empty succ}">
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+        ${succ}
+    </div>
 </c:if>
+<c:if test="${!empty error}">
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+        ${error}
+    </div>
+</c:if>
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">
