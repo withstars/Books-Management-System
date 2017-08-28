@@ -33,10 +33,10 @@ public class BookController {
         }
     }
     @RequestMapping("/allbooks.html")
-    public ModelAndView allBook(HttpServletRequest request){
+    public ModelAndView allBook(){
         ArrayList<Book> books=bookService.getAllBooks();
-        request.getSession().setAttribute("allBooks",books);
         ModelAndView modelAndView=new ModelAndView("allBooks");
+        modelAndView.addObject("books",books);
         return modelAndView;
     }
     @RequestMapping("/deletebook.html")

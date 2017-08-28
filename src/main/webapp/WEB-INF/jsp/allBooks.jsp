@@ -1,4 +1,3 @@
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="com.book.domain.Book" %><%--
   Created by IntelliJ IDEA.
   User: 君行天下
@@ -122,30 +121,24 @@
             </tr>
             </thead>
             <tbody>
-            <%
-                ArrayList<Book> books=(ArrayList<Book>)session.getAttribute("allBooks");
-                for(int i=0;i<books.size();i++){
-                    Book bookTem=books.get(i);
-            %>
+            <c:forEach items="${books}" var="book">
             <tr>
-                <td><%= bookTem.getBookId() %></td>
-                <td><%= bookTem.getName() %></td>
-                <td><%= bookTem.getAuthor() %></td>
-                <td><%= bookTem.getPublish() %></td>
-                <td><%= bookTem.getIsbn() %></td>
-                <td><%= bookTem.getIntroduction() %></td>
-                <td><%= bookTem.getLanguage() %></td>
-                <td><%= bookTem.getPrice() %></td>
-                <td><%= bookTem.getPubdate() %></td>
-                <td><%= bookTem.getClassId() %></td>
-                <td><%= bookTem.getPressmark() %></td>
-                <td><%= bookTem.getState() %></td>
-                <td><a href="deletebook.html?bookId=<%= bookTem.getBookId() %>">删除</a></td>
-                <td><a href="updatebook.html?bookId=<%= bookTem.getBookId() %>">修改</a></td>
+                <td><c:out value="${book.bookId}"></c:out></td>
+                <td><c:out value="${book.name}"></c:out></td>
+                <td><c:out value="${book.author}"></c:out></td>
+                <td><c:out value="${book.publish}"></c:out></td>
+                <td><c:out value="${book.isbn}"></c:out></td>
+                <td><c:out value="${book.introduction}"></c:out></td>
+                <td><c:out value="${book.language}"></c:out></td>
+                <td><c:out value="${book.price}"></c:out></td>
+                <td><c:out value="${book.pubdate}"></c:out></td>
+                <td><c:out value="${book.classId}"></c:out></td>
+                <td><c:out value="${book.pressmark}"></c:out></td>
+                <td><c:out value="${book.state}"></c:out></td>
+                <td><a href="deletebook.html?bookId=<c:out value="${book.bookId}"></c:out>">删除</a></td>
+                <td><a href="updatebook.html?bookId=<c:out value="${book.bookId}"></c:out>">修改</a></td>
             </tr>
-            <%
-                }
-            %>
+            </c:forEach>
             </tbody>
         </table>
     </div>
