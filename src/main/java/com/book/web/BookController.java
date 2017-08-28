@@ -25,12 +25,13 @@ public class BookController {
         boolean exist=bookService.matchBook(bookCommand.getSearchWord());
         if (exist){
             ArrayList<Book> books = bookService.queryBook(bookCommand.getSearchWord());
-            request.getSession().setAttribute("allBooks", books);
+
             ModelAndView modelAndView = new ModelAndView("admin_books");
+            modelAndView.addObject("books",books);
             return modelAndView;
         }
         else{
-            return new ModelAndView("admin_books","info","没有匹配的图书");
+            return new ModelAndView("admin_books","error","没有匹配的图书");
         }
     }
     @RequestMapping("/allbooks.html")

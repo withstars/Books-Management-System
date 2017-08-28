@@ -65,20 +65,31 @@
         </div>
     </div>
 </nav>
-
-<div style="padding: 70px 550px 10px">
-    <form   method="post" action="admin_repassword_do.html?adminId=${admin.adminId}" class="form-inline"  id="repasswd" style="position: fixed;top:20%;left: 30%">
-        <div class="input-group">
-            <input type="password" id="oldPasswd" placeholder="输入旧密码" class="form-control"  class="form-control">
-            <input type="password" id="newPasswd" placeholder="输入新密码" class="form-control"  class="form-control">
-            <input type="password" id="reNewPasswd" placeholder="再次输入新密码" class="form-control"  class="form-control">
-            <em id="tishi" style="color: red"></em>
-            <span>
+<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 25%">
+    <div class="panel panel-primary " >
+        <div class="panel-heading">
+            <h3 class="panel-title">密码修改</h3>
+        </div>
+        <div class="panel-body">
+            <form   method="post" action="admin_repassword_do.html?adminId=${admin.adminId}" class="form-inline"  id="repasswd" >
+                <div class="input-group">
+                    <input type="password" id="oldPasswd" placeholder="输入旧密码" class="form-control"  class="form-control">
+                    <input type="password" id="newPasswd" placeholder="输入新密码" class="form-control"  class="form-control">
+                    <input type="password" id="reNewPasswd" placeholder="再次输入新密码" class="form-control"  class="form-control">
+                    <em id="tishi" style="color: red"></em>
+                    <br/>
+                    <span>
                             <input type="submit" value="提交" class="btn btn-default">
             </span>
-
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
+</div>
+
+
+
+</div>
     <script>
         function mySubmit(flag){
             return flag;
@@ -104,6 +115,6 @@
             }
         })
     </script>
-</div>
+
 </body>
 </html>

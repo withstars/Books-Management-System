@@ -75,7 +75,7 @@ public class LoginController {
     }
 
     @RequestMapping("/admin_repasswd.html")
-    public ModelAndView reAdminPasswd(HttpServletResponse response) {
+    public ModelAndView reAdminPasswd() {
 
         return new ModelAndView("admin_repasswd");
     }

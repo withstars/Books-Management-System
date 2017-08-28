@@ -62,6 +62,24 @@
         </div>
     </div>
 </nav>
+<c:if test="${!empty succ}">
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+            ${succ}
+    </div>
+</c:if>
+<c:if test="${!empty error}">
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+            ${error}
+    </div>
+</c:if>
 <table class="table table-hover" style="position:relative;top: 80px">
     <thead>
     <tr>

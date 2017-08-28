@@ -33,9 +33,17 @@ public class ReaderController {
         boolean success=readerInfoService.deleteReaderInfo(readerId);
 
         if(success){
-            return new ModelAndView("admin_readers","info","删除成功！");
+            ArrayList<ReaderInfo> readers=readerInfoService.readerInfos();
+            ModelAndView modelAndView=new ModelAndView("admin_readers");
+            modelAndView.addObject("succ","删除成功！");
+            modelAndView.addObject("readers",readers);
+            return modelAndView;
         }else {
-            return new ModelAndView("admin_readers","info","删除失败！");
+            ArrayList<ReaderInfo> readers=readerInfoService.readerInfos();
+            ModelAndView modelAndView= new ModelAndView("admin_readers");
+            modelAndView.addObject("error","删除失败！");
+            modelAndView.addObject("readers",readers);
+            return modelAndView;
         }
 
     }
