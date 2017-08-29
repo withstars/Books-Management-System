@@ -47,6 +47,9 @@ public class LoginService {
     public boolean adminRePasswd(int adminId,String newPasswd){
         return adminDao.rePassword(adminId,newPasswd)>0;
     }
+    public String getAdminPasswd(int id){
+        return adminDao.getPasswd(id);
+    }
 
 
 

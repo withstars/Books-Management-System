@@ -21,10 +21,10 @@ public class BookController {
     }
 
     @RequestMapping("/querybook.html")
-    public ModelAndView queryBookDo(HttpServletRequest request,BookCommand bookCommand){
-        boolean exist=bookService.matchBook(bookCommand.getSearchWord());
+    public ModelAndView queryBookDo(HttpServletRequest request,String searchWord){
+        boolean exist=bookService.matchBook(searchWord);
         if (exist){
-            ArrayList<Book> books = bookService.queryBook(bookCommand.getSearchWord());
+            ArrayList<Book> books = bookService.queryBook(searchWord);
 
             ModelAndView modelAndView = new ModelAndView("admin_books");
             modelAndView.addObject("books",books);

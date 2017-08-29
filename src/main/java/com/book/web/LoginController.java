@@ -6,6 +6,7 @@ import com.book.domain.ReaderInfo;
 import com.book.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,32 +36,33 @@ public class LoginController {
     //负责处理loginCheck.html请求
     //请求参数会根据参数名称默认契约自动绑定到相应方法的入参中
     @RequestMapping("/main.html")
-    public ModelAndView loginCheck(HttpServletRequest request, LoginCommand loginCommand){
+    public ModelAndView loginCheck(HttpServletRequest request, int id,String passwd){
 
-                boolean isReader = loginService.hasMatchReader(loginCommand.getId(), loginCommand.getPasswd());
-                boolean isAdmin = loginService.hasMatchAdmin(loginCommand.getId(), loginCommand.getPasswd());
+                boolean isReader = loginService.hasMatchReader(id, passwd);
+                boolean isAdmin = loginService.hasMatchAdmin(id, passwd);
                 if (isAdmin==false&&isReader==false) {
                     return new ModelAndView("index", "error","账号或密码错误");
                 } else if(isAdmin){
                     Admin admin=new Admin();
-                    admin.setAdminId(loginCommand.getId());
-                    admin.setPassword(loginCommand.getPasswd());
+                    admin.setAdminId(id);
+                    admin.setPassword(passwd);
                     request.getSession().setAttribute("admin",admin);
                     return new ModelAndView("admin_main","info","进入管理员页面");
                 }else {
-                    ReaderCard readerCard = loginService.findReaderCardByUserId(loginCommand.getId());
-                    ReaderInfo readerInfo=loginService.findReaderInfoByReaderId(loginCommand.getId());
+                    ReaderCard readerCard = loginService.findReaderCardByUserId(id);
+                    ReaderInfo readerInfo=loginService.findReaderInfoByReaderId(id);
                     request.getSession().setAttribute("readercard", readerCard);
                     request.getSession().setAttribute("readerinfo", readerInfo);
                     return new ModelAndView("reader_main","info","进入读者页面");
                 }
 
-    }
+    };
     @RequestMapping("/admin_main.html")
     public ModelAndView toAdminMain(HttpServletResponse response) {
 
             return new ModelAndView("admin_main");
     }
+
 
     @RequestMapping("/reader_main.html")
     public ModelAndView toReaderMain(HttpServletResponse response) {
@@ -79,10 +81,37 @@ public class LoginController {
 
         return new ModelAndView("admin_repasswd");
     }
+    @RequestMapping("/admin_repasswd_do")
+    public ModelAndView reAdminPasswdDo(HttpServletRequest request,String oldPasswd,String newPasswd,String reNewPasswd ) {
+
+        Admin admin=(Admin) request.getSession().getAttribute("admin");
+        int id=admin.getAdminId();
+        String passwd=loginService.getAdminPasswd(id);
+
+        if(passwd.equals(oldPasswd)){
+            boolean succ=loginService.adminRePasswd(id,newPasswd);
+            if (succ){
+                ModelAndView modelAndView=new ModelAndView("admin_repasswd");
+                modelAndView.addObject("succ","密码修改成功");
+                return modelAndView;
+            }
+            else {
+                ModelAndView modelAndView=new ModelAndView("admin_repasswd");
+                modelAndView.addObject("succ","密码修改失败");
+                return modelAndView;
+            }
+        }else {
+            ModelAndView modelAndView=new ModelAndView("admin_repasswd");
+            modelAndView.addObject("error","旧密码错误");
+            return modelAndView;
+        }
+    };
 
     //配置404页面
      @RequestMapping("*")
      public String notFind(){
      return "404";
        }
+
+
 }
