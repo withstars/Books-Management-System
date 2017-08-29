@@ -47,9 +47,7 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">jmeter</a></li>
-                        <li><a href="#">EJB</a></li>
-                        <li><a href="#">Jasper Report</a></li>
+                        <li><a href="#">借还日志</a></li>
                     </ul>
                 </li>
                 <li >
