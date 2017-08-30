@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>图书信息添加</title>
+    <title>编辑《 ${detail.name}》</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
@@ -67,56 +67,56 @@
 <div class="col-xs-6 col-md-offset-3" style="position: relative;top: 10%">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">图书添加</h3>
+            <h3 class="panel-title">编辑《 ${detail.name}》</h3>
         </div>
         <div class="panel-body">
-            <form action="book_add_do.html" method="post" id="addbook" >
+            <form action="book_edit_do.html?id=${detail.bookId}" method="post" id="addbook" >
 
                 <div class="input-group">
                     <span  class="input-group-addon">图书名</span>
-                    <input type="text" class="form-control" name="name" id="name" >
+                    <input type="text" class="form-control" name="name" id="name" value="${detail.name}">
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">作者</span>
-                    <input type="text" class="form-control" name="author" id="author"  >
+                    <input type="text" class="form-control" name="author" id="author" value="${detail.author}" >
                 </div>
                 <div class="input-group">
                     <span  class="input-group-addon">出版社</span>
-                    <input type="text" class="form-control" name="publish" id="publish"  >
+                    <input type="text" class="form-control" name="publish" id="publish"  value="${detail.publish}" >
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">ISBN</span>
-                    <input type="text" class="form-control" name="isbn" id="isbn"  >
+                    <input type="text" class="form-control" name="isbn" id="isbn"  value="${detail.isbn}" >
                 </div>
                 <div class="input-group">
                     <span  class="input-group-addon">简介</span>
-                    <input type="text" class="form-control" name="introduction" id="introduction"  >
+                    <input type="text" class="form-control" name="introduction" id="introduction"  value="${detail.introduction}" >
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">语言</span>
-                    <input type="text" class="form-control" name="language" id="language" >
+                    <input type="text" class="form-control" name="language" id="language" value="${detail.author}" >
                 </div>
                 <div class="input-group">
                     <span  class="input-group-addon">价格</span>
-                    <input type="text" class="form-control" name="price"  id="price">
+                    <input type="text" class="form-control" name="price"  id="price" value="${detail.price}">
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">出版日期</span>
-                    <input type="text" class="form-control" name="pubdate" id="pubdate" >
+                    <input type="text" class="form-control" name="pubdate" id="pubdate" value="${detail.pubdate}">
                 </div>
                 <div class="input-group">
                     <span  class="input-group-addon">分类号</span>
-                    <input type="text" class="form-control" name="classId" id="classId">
+                    <input type="text" class="form-control" name="classId" id="classId" value="${detail.classId}">
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">书架号</span>
-                    <input type="text" class="form-control" name="pressmark" id="pressmark" >
+                    <input type="text" class="form-control" name="pressmark" id="pressmark" value="${detail.pressmark}">
                 </div>
                 <div class="input-group">
                     <span  class="input-group-addon">状态</span>
-                    <input type="text" class="form-control" name="state"  id="state">
+                    <input type="text" class="form-control" name="state"  id="state" value="${detail.state}">
                 </div>
-                <input type="submit" value="添加" class="btn default" class="text-left">
+                <input type="submit" value="确定" class="btn default" class="text-left">
                 <script>
                     function mySubmit(flag){
                         return flag;

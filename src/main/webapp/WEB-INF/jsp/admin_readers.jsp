@@ -101,7 +101,7 @@
         <td><c:out value="${reader.address}"></c:out></td>
         <td><c:out value="${reader.telcode}"></c:out></td>
         <td><a href="reader_delete.html?readerId=<c:out value="${reader.readerId}"></c:out>">删除</a></td>
-        <td><a href="reader_update.html?readerId=<c:out value="${reader.readerId}"></c:out>">修改</a></td>
+        <td><a href="reader_update.html?readerId=<c:out value="${reader.readerId}"></c:out>">编辑</a></td>
     </tr>
 </c:forEach>
     </tbody>

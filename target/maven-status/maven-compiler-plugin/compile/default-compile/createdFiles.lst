@@ -8,6 +8,7 @@ com\book\domain\ReaderInfo.class
 com\book\dao\ReaderInfoDao$1.class
 com\book\domain\ReaderCard.class
 com\book\dao\ReaderCardDao$1.class
+com\book\dao\BookDao$3.class
 com\book\domain\Book.class
 com\book\web\BookController.class
 com\book\dao\ReaderInfoDao$2.class

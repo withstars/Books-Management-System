@@ -36,5 +36,12 @@ public class BookService {
         return bookDao.addBook(book)>0;
     }
 
+    public Book getBook(Long bookId){
+        Book book=bookDao.getBook(bookId);
+        return book;
+    }
+    public boolean editBook(Book book){
+        return bookDao.editBook(book)>0;
+    }
 
 }

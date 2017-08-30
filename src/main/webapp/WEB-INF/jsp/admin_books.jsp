@@ -150,7 +150,7 @@
                 <td><c:out value="${book.pressmark}"></c:out></td>
                 <td><c:out value="${book.state}"></c:out></td>
                 <td><a href="deletebook.html?bookId=<c:out value="${book.bookId}"></c:out>">删除</a></td>
-                <td><a href="updatebook.html?bookId=<c:out value="${book.bookId}"></c:out>">修改</a></td>
+                <td><a href="updatebook.html?bookId=<c:out value="${book.bookId}"></c:out>">编辑</a></td>
             </tr>
             </c:forEach>
             </tbody>

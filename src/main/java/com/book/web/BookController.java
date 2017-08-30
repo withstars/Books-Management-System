@@ -99,6 +99,47 @@ public class BookController {
         }
     }
 
+    @RequestMapping("/updatebook.html")
+    public ModelAndView bookEdit(HttpServletRequest request){
+        long bookId=Integer.parseInt(request.getParameter("bookId"));
+        Book book=bookService.getBook(bookId);
+        ModelAndView modelAndView=new ModelAndView("admin_book_edit");
+        modelAndView.addObject("detail",book);
+        return modelAndView;
+    }
 
+    @RequestMapping("/book_edit_do.html")
+    public ModelAndView bookEditDo(HttpServletRequest request,BookAddCommand bookAddCommand){
+        long bookId=Integer.parseInt( request.getParameter("id"));
+        Book book=new Book();
+        book.setBookId(bookId);
+        book.setPrice(bookAddCommand.getPrice());
+        book.setState(bookAddCommand.getState());
+        book.setPublish(bookAddCommand.getPublish());
+        book.setPubdate(bookAddCommand.getPubdate());
+        book.setName(bookAddCommand.getName());
+        book.setIsbn(bookAddCommand.getIsbn());
+        book.setClassId(bookAddCommand.getClassId());
+        book.setAuthor(bookAddCommand.getAuthor());
+        book.setIntroduction(bookAddCommand.getIntroduction());
+        book.setPressmark(bookAddCommand.getPressmark());
+        book.setLanguage(bookAddCommand.getLanguage());
+
+
+        boolean succ=bookService.editBook(book);
+        ArrayList<Book> books=bookService.getAllBooks();
+        if (succ){
+            ModelAndView modelAndView= new ModelAndView("admin_books");
+            modelAndView.addObject("succ","图书修改成功");
+            modelAndView.addObject("books",books);
+            return modelAndView;
+        }
+        else {
+            ModelAndView modelAndView= new ModelAndView("admin_books");
+            modelAndView.addObject("error","图书修改失败");
+            modelAndView.addObject("books",books);
+            return modelAndView;
+        }
+    }
 
 }
