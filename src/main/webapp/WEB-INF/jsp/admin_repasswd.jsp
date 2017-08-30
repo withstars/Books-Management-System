@@ -40,6 +40,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="allreaders.html">全部读者</a></li>
+                        <li><a href="reader_add.html">增加读者</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

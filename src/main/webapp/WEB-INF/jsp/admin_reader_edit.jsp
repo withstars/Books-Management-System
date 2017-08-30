@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>编辑《 ${detail.name}》</title>
+    <title>编辑读者信息《 ${readerInfo.readerId}》</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
@@ -68,63 +68,43 @@
 <div class="col-xs-6 col-md-offset-3" style="position: relative;top: 10%">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">编辑《 ${detail.name}》</h3>
+            <h3 class="panel-title">编辑读者信息《 ${readerInfo.readerId}》</h3>
         </div>
         <div class="panel-body">
-            <form action="book_edit_do.html?id=${detail.bookId}" method="post" id="addbook" >
+            <form action="reader_edit_do.html?id=${readerInfo.readerId}" method="post" id="readeredit" >
 
                 <div class="input-group">
-                    <span  class="input-group-addon">图书名</span>
-                    <input type="text" class="form-control" name="name" id="name" value="${detail.name}">
+                    <span  class="input-group-addon">读者证号</span>
+                    <input readonly="readonly" type="text" class="form-control" name="readerId" id="readerId" value="${readerInfo.readerId}">
                 </div>
                 <div class="input-group">
-                    <span class="input-group-addon">作者</span>
-                    <input type="text" class="form-control" name="author" id="author" value="${detail.author}" >
+                    <span class="input-group-addon">姓名</span>
+                    <input type="text" class="form-control" name="name" id="name" value="${readerInfo.name}" >
                 </div>
                 <div class="input-group">
-                    <span  class="input-group-addon">出版社</span>
-                    <input type="text" class="form-control" name="publish" id="publish"  value="${detail.publish}" >
+                    <span  class="input-group-addon">性别</span>
+                    <input type="text" class="form-control" name="sex" id="sex"  value="${readerInfo.sex}" >
                 </div>
                 <div class="input-group">
-                    <span class="input-group-addon">ISBN</span>
-                    <input type="text" class="form-control" name="isbn" id="isbn"  value="${detail.isbn}" >
+                    <span class="input-group-addon">生日</span>
+                    <input type="text" class="form-control" name="birth" id="birth"  value="${readerInfo.birth}" >
                 </div>
                 <div class="input-group">
-                    <span  class="input-group-addon">简介</span>
-                    <input type="text" class="form-control" name="introduction" id="introduction"  value="${detail.introduction}" >
+                    <span  class="input-group-addon">地址</span>
+                    <input type="text" class="form-control" name="address" id="address"  value="${readerInfo.address}" >
                 </div>
                 <div class="input-group">
-                    <span class="input-group-addon">语言</span>
-                    <input type="text" class="form-control" name="language" id="language" value="${detail.author}" >
-                </div>
-                <div class="input-group">
-                    <span  class="input-group-addon">价格</span>
-                    <input type="text" class="form-control" name="price"  id="price" value="${detail.price}">
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon">出版日期</span>
-                    <input type="text" class="form-control" name="pubdate" id="pubdate" value="${detail.pubdate}">
-                </div>
-                <div class="input-group">
-                    <span  class="input-group-addon">分类号</span>
-                    <input type="text" class="form-control" name="classId" id="classId" value="${detail.classId}">
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon">书架号</span>
-                    <input type="text" class="form-control" name="pressmark" id="pressmark" value="${detail.pressmark}">
-                </div>
-                <div class="input-group">
-                    <span  class="input-group-addon">状态</span>
-                    <input type="text" class="form-control" name="state"  id="state" value="${detail.state}">
+                    <span class="input-group-addon">电话</span>
+                    <input type="text" class="form-control" name="telcode" id="telcode" value="${readerInfo.telcode}" >
                 </div>
                 <input type="submit" value="确定" class="btn default" class="text-left">
                 <script>
                     function mySubmit(flag){
                         return flag;
                     }
-                    $("#addbook").submit(function () {
+                    $("#readeredit").submit(function () {
                         if($("#name").val()==''||$("#author").val()==''||$("#publish").val()==''||$("#isbn").val()==''||$("#introduction").val()==''||$("#language").val()==''||$("#price").val()==''||$("#pubdate").val()==''||$("#classId").val()==''||$("#pressmark").val()==''||$("#state").val()==''){
-                            alert("请填入完整图书信息！");
+                            alert("请填入完整读者信息！");
                             return mySubmit(false);
                         }
                     })

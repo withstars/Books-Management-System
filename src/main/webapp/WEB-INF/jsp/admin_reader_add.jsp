@@ -1,34 +1,19 @@
 <%--
   Created by IntelliJ IDEA.
   User: 君行天下
-  Date: 2017/7/23
-  Time: 17:30
+  Date: 2017/7/31
+  Time: 8:09
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"  %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>用户主页</title>
+    <title>添加读者</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <style>
-        body{
-            margin: 0;
-            padding: 0;
-            overflow: visible;
-        }
-        #newsa{
-            width:500px;
-            height: 200px;
-            position: fixed;
-            left: 35%;
-            top:30%;
-        }
-    </style>
 </head>
-<body background="img/281289-106.jpg">
+<body>
 <nav  style="position:fixed;z-index: 999;width: 100%" class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -79,45 +64,53 @@
         </div>
     </div>
 </nav>
-<div id="newsa">
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>图书馆2017年暑假闭馆通知</span> &nbsp;&nbsp;&nbsp;<time>2017-6-20</time></a><br/><br/>
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>图书馆第八届考研经验交流大会圆满结束</span>&nbsp;&nbsp;&nbsp;<time>2017-6-7</time></a><br/><br/>
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>扬中华之美德 行传统毕业礼</span>&nbsp;&nbsp;&nbsp;<time>2017-6-6</time></a><br/><br/>
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>当代国学社举办中北大学首届书画篆刻展</span>&nbsp;&nbsp;&nbsp;<time>2017-5-8</time></a><br/><br/>
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>关于和《百家讲坛》主讲人钱斌老师座谈的通知</span>&nbsp;&nbsp;&nbsp;<time>2017-5-3</time></a><br/>
-</div>
 
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    温馨提示
-                </h4>
-            </div>
-            <div class="modal-body">
-                使用结束后请安全退出。
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">知道了
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
+<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 10%">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">添加读者</h3>
+        </div>
+        <div class="panel-body">
+            <form action="reader_add_do.html" method="post" id="readeredit" >
+
+
+                <div class="input-group">
+                    <span class="input-group-addon">姓名</span>
+                    <input type="text" class="form-control" name="name" id="name"  >
+                </div>
+                <div class="input-group">
+                    <span  class="input-group-addon">性别</span>
+                    <input type="text" class="form-control" name="sex" id="sex" >
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">生日</span>
+                    <input type="text" class="form-control" name="birth" id="birth"  >
+                </div>
+                <div class="input-group">
+                    <span  class="input-group-addon">地址</span>
+                    <input type="text" class="form-control" name="address" id="address"  >
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">电话</span>
+                    <input type="text" class="form-control" name="telcode" id="telcode"  >
+                </div>
+                <input type="submit" value="添加" class="btn default" class="text-left">
+                <script>
+                    function mySubmit(flag){
+                        return flag;
+                    }
+                    $("#readeredit").submit(function () {
+                        if($("#name").val()==''||$("#author").val()==''||$("#publish").val()==''||$("#isbn").val()==''||$("#introduction").val()==''||$("#language").val()==''||$("#price").val()==''||$("#pubdate").val()==''||$("#classId").val()==''||$("#pressmark").val()==''||$("#state").val()==''){
+                            alert("请填入完整读者信息！");
+                            return mySubmit(false);
+                        }
+                    })
+                </script>
+            </form>
+        </div>
+    </div>
+
 </div>
-<c:if test="${!empty info}">
-    <script>
-        $(function () {
-            $("#myModal").modal({
-                show: true
-            })
-        })
-    </script>
-</c:if>
 
 </body>
 </html>

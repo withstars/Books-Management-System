@@ -36,6 +36,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="allreaders.html">全部读者</a></li>
+                        <li><a href="reader_add.html">增加读者</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -60,6 +61,7 @@
         </div>
     </div>
 </nav>
+<div style="position: relative;top: 15%">
 <c:if test="${!empty succ}">
     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert"
@@ -78,6 +80,7 @@
             ${error}
     </div>
 </c:if>
+</div>
 <table class="table table-hover" style="position:relative;top: 80px">
     <thead>
     <tr>
@@ -101,7 +104,7 @@
         <td><c:out value="${reader.address}"></c:out></td>
         <td><c:out value="${reader.telcode}"></c:out></td>
         <td><a href="reader_delete.html?readerId=<c:out value="${reader.readerId}"></c:out>">删除</a></td>
-        <td><a href="reader_update.html?readerId=<c:out value="${reader.readerId}"></c:out>">编辑</a></td>
+        <td><a href="reader_edit.html?readerId=<c:out value="${reader.readerId}"></c:out>">编辑</a></td>
     </tr>
 </c:forEach>
     </tbody>

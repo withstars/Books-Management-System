@@ -67,7 +67,7 @@ public class BookController {
     }
 
     @RequestMapping("/book_add_do.html")
-    public ModelAndView addBookDo(HttpServletRequest request,BookAddCommand bookAddCommand){
+    public ModelAndView addBookDo(BookAddCommand bookAddCommand){
         Book book=new Book();
         book.setBookId(0);
         book.setPrice(bookAddCommand.getPrice());

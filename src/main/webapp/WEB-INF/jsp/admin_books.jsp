@@ -41,6 +41,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="allreaders.html">全部读者</a></li>
+                        <li><a href="reader_add.html">增加读者</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -89,6 +90,7 @@
         })
     </script>
 </div>
+<div style="position: relative;top: 15%">
 <c:if test="${!empty succ}">
     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert"
@@ -107,7 +109,7 @@
         ${error}
     </div>
 </c:if>
-
+</div>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">

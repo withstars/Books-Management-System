@@ -22,4 +22,14 @@ public class ReaderInfoService {
     public boolean deleteReaderInfo(int readerId){
         return readerInfoDao.deleteReaderInfo(readerId)>0;
     }
+
+    public ReaderInfo getReaderInfo(int readerId){
+        return readerInfoDao.findReaderInfoByReaderId(readerId);
+    }
+    public boolean editReaderInfo(ReaderInfo readerInfo){
+        return readerInfoDao.editReaderInfo(readerInfo)>0;
+    }
+    public boolean addReaderInfo(ReaderInfo readerInfo){
+        return  readerInfoDao.addReaderInfo(readerInfo)>0;
+    }
 }
