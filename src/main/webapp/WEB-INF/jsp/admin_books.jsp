@@ -91,7 +91,7 @@
         })
     </script>
 </div>
-<div style="position: relative;top: 15%">
+<div style="position: relative;top: 10%">
 <c:if test="${!empty succ}">
     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert"
@@ -133,8 +133,8 @@
                 <th>分类号</th>
                 <th>书架号</th>
                 <th>状态</th>
+                <th>编辑</th>
                 <th>删除</th>
-                <th>修改</th>
             </tr>
             </thead>
             <tbody>
@@ -152,8 +152,8 @@
                 <td><c:out value="${book.classId}"></c:out></td>
                 <td><c:out value="${book.pressmark}"></c:out></td>
                 <td><c:out value="${book.state}"></c:out></td>
-                <td><a href="deletebook.html?bookId=<c:out value="${book.bookId}"></c:out>">删除</a></td>
-                <td><a href="updatebook.html?bookId=<c:out value="${book.bookId}"></c:out>">编辑</a></td>
+                <td><a href="updatebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-info btn-xs">编辑</button></a></td>
+                <td><a href="deletebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-danger btn-xs">删除</button></a></td>
             </tr>
             </c:forEach>
             </tbody>

@@ -66,7 +66,7 @@
     </div>
 </nav>
 
-<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 10%">
+<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 25%">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">添加读者</h3>
@@ -95,7 +95,7 @@
                     <span class="input-group-addon">电话</span>
                     <input type="text" class="form-control" name="telcode" id="telcode"  >
                 </div>
-                <input type="submit" value="添加" class="btn default" class="text-left">
+                <input type="submit" value="添加" class="btn btn-success btn-sm" class="text-left">
                 <script>
                     function mySubmit(flag){
                         return flag;

@@ -110,7 +110,7 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<c:if test="${!empty info}">
+<c:if test="${!empty login}">
     <script>
         $(function () {
             $("#myModal").modal({

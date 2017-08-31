@@ -118,7 +118,7 @@
                     <span  class="input-group-addon">状态</span>
                     <input type="text" class="form-control" name="state"  id="state">
                 </div>
-                <input type="submit" value="添加" class="btn default" class="text-left">
+                <input type="submit" value="添加" class="btn btn-success btn-sm" class="text-left">
                 <script>
                     function mySubmit(flag){
                         return flag;

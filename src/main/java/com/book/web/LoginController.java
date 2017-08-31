@@ -47,13 +47,13 @@ public class LoginController {
                     admin.setAdminId(id);
                     admin.setPassword(passwd);
                     request.getSession().setAttribute("admin",admin);
-                    return new ModelAndView("admin_main","info","进入管理员页面");
+                    return new ModelAndView("admin_main","login","进入管理员页面");
                 }else {
                     ReaderCard readerCard = loginService.findReaderCardByUserId(id);
                     ReaderInfo readerInfo=loginService.findReaderInfoByReaderId(id);
                     request.getSession().setAttribute("readercard", readerCard);
                     request.getSession().setAttribute("readerinfo", readerInfo);
-                    return new ModelAndView("reader_main","info","进入读者页面");
+                    return new ModelAndView("reader_main","login","进入读者页面");
                 }
 
     };

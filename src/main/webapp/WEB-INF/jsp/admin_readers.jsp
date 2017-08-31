@@ -91,8 +91,8 @@
         <th>生日</th>
         <th>地址</th>
         <th>电话</th>
+        <th>编辑</th>
         <th>删除</th>
-        <th>修改</th>
     </tr>
     </thead>
     <tbody>
@@ -104,8 +104,8 @@
         <td><c:out value="${reader.birth}"></c:out></td>
         <td><c:out value="${reader.address}"></c:out></td>
         <td><c:out value="${reader.telcode}"></c:out></td>
-        <td><a href="reader_delete.html?readerId=<c:out value="${reader.readerId}"></c:out>">删除</a></td>
-        <td><a href="reader_edit.html?readerId=<c:out value="${reader.readerId}"></c:out>">编辑</a></td>
+        <td><a href="reader_edit.html?readerId=<c:out value="${reader.readerId}"></c:out>"><button type="button" class="btn btn-info btn-xs">编辑</button></a></td>
+        <td><a href="reader_delete.html?readerId=<c:out value="${reader.readerId}"></c:out>"><button type="button" class="btn btn-danger btn-xs">删除</button></a></td>
     </tr>
 </c:forEach>
     </tbody>

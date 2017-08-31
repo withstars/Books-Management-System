@@ -98,7 +98,7 @@
                     <span class="input-group-addon">电话</span>
                     <input type="text" class="form-control" name="telcode" id="telcode" value="${readerInfo.telcode}" >
                 </div>
-                <input type="submit" value="确定" class="btn default" class="text-left">
+                <input type="submit" value="确定" class="btn btn-success btn-sm" class="text-left">
                 <script>
                     function mySubmit(flag){
                         return flag;
