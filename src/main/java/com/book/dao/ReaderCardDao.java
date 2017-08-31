@@ -1,6 +1,7 @@
 package com.book.dao;
 
 import com.book.domain.ReaderCard;
+import com.book.domain.ReaderInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 @Repository
 public class ReaderCardDao {
@@ -17,6 +19,7 @@ public class ReaderCardDao {
     private final static String MATCH_COUNT_SQL="select count(*) from reader_card where reader_id = ? and passwd = ? ";
     private final static String FIND_READER_BY_USERID="select reader_id, name, passwd, card_state from reader_card where reader_id = ? ";
     private final static String RE_PASSWORD_SQL="UPDATE reader_card set passwd = ? where reader_id = ? ";
+    private final static String ADD_READERCARD_SQL="INSERT INTO reader_card (reader_id,name) values ( ? , ?)";
     @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -43,5 +46,13 @@ public class ReaderCardDao {
 
     public int rePassword(int readerId,String newPasswd){
         return jdbcTemplate.update(RE_PASSWORD_SQL,new Object[]{newPasswd,readerId});
+    }
+
+    public int addReaderCard(ReaderInfo readerInfo){
+
+        String name=readerInfo.getName();
+        int readerId=readerInfo.getReaderId();
+
+        return jdbcTemplate.update(ADD_READERCARD_SQL,new Object[]{readerId,name});
     }
 }

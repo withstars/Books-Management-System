@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>添加读者</title>
+    <title>《 ${detail.name}》</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
@@ -66,51 +66,59 @@
     </div>
 </nav>
 
-<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 25%">
+<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 10%">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">添加读者</h3>
+            <h3 class="panel-title">《 ${detail.name}》</h3>
         </div>
         <div class="panel-body">
-            <form action="reader_add_do.html" method="post" id="readeredit" >
-                <div class="input-group">
-                    <span  class="input-group-addon">读者证号</span>
-                    <input  type="text" class="form-control" name="readerId" id="readerId" ">
-                </div>
-
-                <div class="input-group">
-                    <span class="input-group-addon">姓名</span>
-                    <input type="text" class="form-control" name="name" id="name"  >
-                </div>
-                <div class="input-group">
-                    <span  class="input-group-addon">性别</span>
-                    <input type="text" class="form-control" name="sex" id="sex" >
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon">生日</span>
-                    <input type="text" class="form-control" name="birth" id="birth"  >
-                </div>
-                <div class="input-group">
-                    <span  class="input-group-addon">地址</span>
-                    <input type="text" class="form-control" name="address" id="address"  >
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon">电话</span>
-                    <input type="text" class="form-control" name="telcode" id="telcode"  >
-                </div>
-                <input type="submit" value="添加" class="btn btn-success btn-sm" class="text-left">
-                <script>
-                    function mySubmit(flag){
-                        return flag;
-                    }
-                    $("#readeredit").submit(function () {
-                        if($("#name").val()==''||$("#author").val()==''||$("#publish").val()==''||$("#isbn").val()==''||$("#introduction").val()==''||$("#language").val()==''||$("#price").val()==''||$("#pubdate").val()==''||$("#classId").val()==''||$("#pressmark").val()==''||$("#state").val()==''){
-                            alert("请填入完整读者信息！");
-                            return mySubmit(false);
-                        }
-                    })
-                </script>
-            </form>
+            <table class="table table-hover">
+                <tr>
+                    <th width="15%">书名</th>
+                    <td>${detail.name}</td>
+                </tr>
+                <tr>
+                    <th>作者</th>
+                    <td>${detail.author}</td>
+                </tr>
+                <tr>
+                    <th>出版社</th>
+                    <td>${detail.publish}</td>
+                </tr>
+                <tr>
+                    <th>ISBN</th>
+                    <td>${detail.isbn}</td>
+                </tr>
+                <tr>
+                    <th>简介</th>
+                    <td>${detail.introduction}</td>
+                </tr>
+                <tr>
+                    <th>语言</th>
+                    <td>${detail.language}</td>
+                </tr>
+                <tr>
+                    <th>价格</th>
+                    <td>${detail.price}</td>
+                </tr>
+                <tr>
+                    <th>出版日期</th>
+                    <td>${detail.pubdate}</td>
+                </tr>
+                <tr>
+                    <th>分类号</th>
+                    <td>${detail.classId}</td>
+                </tr>
+                <tr>
+                    <th>书架号</th>
+                    <td>${detail.pressmark}</td>
+                </tr>
+                <tr>
+                    <th>状态</th>
+                    <td>${detail.state}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

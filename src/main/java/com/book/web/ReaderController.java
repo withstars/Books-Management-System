@@ -1,6 +1,7 @@
 package com.book.web;
 
 import com.book.domain.ReaderInfo;
+import com.book.service.ReaderCardService;
 import com.book.service.ReaderInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,12 @@ public class ReaderController {
     @Autowired
     public void setReaderInfoService(ReaderInfoService readerInfoService) {
         this.readerInfoService = readerInfoService;
+    }
+    private ReaderCardService readerCardService;
+
+    @Autowired
+    public void setReaderCardService(ReaderCardService readerCardService) {
+        this.readerCardService = readerCardService;
     }
 
     @RequestMapping("allreaders.html")
@@ -103,7 +110,7 @@ public class ReaderController {
 
     }
     @RequestMapping("reader_add_do.html")
-    public ModelAndView readerInfoAddDo(String name,String sex,String birth,String address,String telcode){
+    public ModelAndView readerInfoAddDo(String name,String sex,String birth,String address,String telcode,int readerId){
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         Date nbirth=new Date();
         try{
@@ -117,12 +124,13 @@ public class ReaderController {
         readerInfo.setAddress(address);
         readerInfo.setBirth(nbirth);
         readerInfo.setName(name);
-        readerInfo.setReaderId(0);
+        readerInfo.setReaderId(readerId);
         readerInfo.setTelcode(telcode);
         readerInfo.setSex(sex);
         boolean succ=readerInfoService.addReaderInfo(readerInfo);
+        boolean succc=readerCardService.addReaderCard(readerInfo);
         ArrayList<ReaderInfo> readers=readerInfoService.readerInfos();
-        if (succ){
+        if (succ&&succc){
             ModelAndView modelAndView=new ModelAndView("admin_readers");
             modelAndView.addObject("succ","添加读者成功");
             modelAndView.addObject("readers",readers);

@@ -142,4 +142,15 @@ public class BookController {
         }
     }
 
+
+    @RequestMapping("/bookdetail.html")
+    public ModelAndView bookDetail(HttpServletRequest request){
+        long bookId=Integer.parseInt(request.getParameter("bookId"));
+        Book book=bookService.getBook(bookId);
+        ModelAndView modelAndView=new ModelAndView("admin_book_detail");
+        modelAndView.addObject("detail",book);
+        return modelAndView;
+    }
+
+
 }

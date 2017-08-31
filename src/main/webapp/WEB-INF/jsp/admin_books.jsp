@@ -121,18 +121,13 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>图书号</th>
-                <th>图书名</th>
+                <th>书名</th>
                 <th>作者</th>
                 <th>出版社</th>
                 <th>ISBN</th>
-                <th>简介</th>
-                <th>语言</th>
                 <th>价格</th>
-                <th>出版日期</th>
-                <th>分类号</th>
-                <th>书架号</th>
                 <th>状态</th>
+                <th>详情</th>
                 <th>编辑</th>
                 <th>删除</th>
             </tr>
@@ -140,18 +135,13 @@
             <tbody>
             <c:forEach items="${books}" var="book">
             <tr>
-                <td><c:out value="${book.bookId}"></c:out></td>
                 <td><c:out value="${book.name}"></c:out></td>
                 <td><c:out value="${book.author}"></c:out></td>
                 <td><c:out value="${book.publish}"></c:out></td>
                 <td><c:out value="${book.isbn}"></c:out></td>
-                <td><c:out value="${book.introduction}"></c:out></td>
-                <td><c:out value="${book.language}"></c:out></td>
                 <td><c:out value="${book.price}"></c:out></td>
-                <td><c:out value="${book.pubdate}"></c:out></td>
-                <td><c:out value="${book.classId}"></c:out></td>
-                <td><c:out value="${book.pressmark}"></c:out></td>
                 <td><c:out value="${book.state}"></c:out></td>
+                <td><a href="bookdetail.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-success btn-xs">详情</button></a></td>
                 <td><a href="updatebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-info btn-xs">编辑</button></a></td>
                 <td><a href="deletebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-danger btn-xs">删除</button></a></td>
             </tr>

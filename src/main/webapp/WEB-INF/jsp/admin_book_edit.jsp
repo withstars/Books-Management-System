@@ -75,7 +75,7 @@
             <form action="book_edit_do.html?id=${detail.bookId}" method="post" id="addbook" >
 
                 <div class="input-group">
-                    <span  class="input-group-addon">图书名</span>
+                    <span  class="input-group-addon">书名</span>
                     <input type="text" class="form-control" name="name" id="name" value="${detail.name}">
                 </div>
                 <div class="input-group">
@@ -96,7 +96,7 @@
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">语言</span>
-                    <input type="text" class="form-control" name="language" id="language" value="${detail.author}" >
+                    <input type="text" class="form-control" name="language" id="language" value="${detail.language}" >
                 </div>
                 <div class="input-group">
                     <span  class="input-group-addon">价格</span>

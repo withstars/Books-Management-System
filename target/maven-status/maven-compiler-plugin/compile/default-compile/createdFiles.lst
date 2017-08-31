@@ -16,6 +16,7 @@ com\book\domain\Admin.class
 com\book\dao\BookDao.class
 com\book\dao\BookDao$2.class
 com\book\web\WebConfig.class
+com\book\service\ReaderCardService.class
 com\book\service\ReaderInfoService.class
 com\book\web\LoginController.class
 com\book\dao\BookDao$1.class
