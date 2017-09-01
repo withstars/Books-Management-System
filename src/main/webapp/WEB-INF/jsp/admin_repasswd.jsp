@@ -108,8 +108,6 @@
     </div>
 </div>
 
-
-</div>
     <script>
         function mySubmit(flag){
             return flag;

@@ -56,45 +56,52 @@
         </div>
     </div>
 </nav>
-<div class="col-xs-5 col-md-offset-3">
-    <div class="panel panel-default">
+<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 15%">
+    <div class="panel panel-primary " >
         <div class="panel-heading">
-            <h3 class="panel-title">
-                我的信息
-            </h3>
+            <h3 class="panel-title">密码修改</h3>
         </div>
         <div class="panel-body">
-            <table class="table table-hover">
-                <tr>
-                    <th width="15%">账号</th>
-                    <td>${readerinfo.readerId}</td>
-                </tr>
-                <tr>
-                    <th>姓名</th>
-                    <td>${readerinfo.name}</td>
-                </tr>
-                <tr>
-                    <th>性别</th>
-                    <td>${readerinfo.sex}</td>
-                </tr>
-                <tr>
-                    <th>生日</th>
-                    <td>${readerinfo.birth}</td>
-                </tr>
-                <tr>
-                    <th>地址</th>
-                    <td>${readerinfo.address}</td>
-                </tr>
-                <tr>
-                    <th>电话</th>
-                    <td>${readerinfo.telcode}</td>
-                </tr>
-                </tbody>
-            </table>
+            <form   method="post" action="reader_repasswd_do" class="form-inline"  id="repasswd" >
+                <div class="input-group">
+                    <input type="password" id="oldPasswd" name="oldPasswd" placeholder="输入旧密码" class="form-control"  class="form-control">
+                    <input type="password" id="newPasswd" name="newPasswd" placeholder="输入新密码" class="form-control"  class="form-control">
+                    <input type="password" id="reNewPasswd" name="reNewPasswd" placeholder="再次输入新密码" class="form-control"  class="form-control">
+                    <em id="tishi" style="color: red"></em>
+                    <br/>
+                    <span>
+                            <input type="submit" value="提交" class="btn btn-default">
+            </span>
+                </div>
+            </form>
         </div>
-        <a class="btn btn-success btn-sm" href="reader_info_edit.html?readerId=${readerinfo.readerId}" role="button">修改</a>
     </div>
 </div>
+<script>
+    function mySubmit(flag){
+        return flag;
+    }
+
+    $(document).keyup(function () {
+        if($("#newPasswd").val()!=$("#reNewPasswd").val()&&$("#newPasswd").val()!=""&&$("#reNewPasswd").val()!=""&&$("#newPasswd").val().length==$("#reNewPasswd").val().length){
+            $("#tishi").text("两次输入的新密码不同，请检查");
+        }
+        else {
+            $("#tishi").text("");
+        }
+    })
+
+    $("#repasswd").submit(function () {
+        if($("#oldPasswd").val()==''||$("#newPasswd").val()==''||$("#reNewPasswd").val()==''){
+            $("#tishi").text("请填写完毕后提交");
+            return mySubmit(false);
+        }
+        else if($("#newPasswd").val()!=$("#reNewPasswd").val()){
+            $("#tishi").text("两次输入的新密码不同，请检查");
+            return mySubmit(false);
+        }
+    })
+</script>
 
 
 </body>

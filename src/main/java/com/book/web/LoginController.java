@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,29 +32,40 @@ public class LoginController {
         request.getSession().invalidate();
         return "index";
     }
+    @RequestMapping("/logout.html")
+    public String logout(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "redirect:/login.html";
+    }
 
 
     //负责处理loginCheck.html请求
     //请求参数会根据参数名称默认契约自动绑定到相应方法的入参中
     @RequestMapping("/main.html")
-    public ModelAndView loginCheck(HttpServletRequest request, int id,String passwd){
+    public String loginCheck(HttpServletRequest request, int id,String passwd,RedirectAttributes redirectAttributes){
 
                 boolean isReader = loginService.hasMatchReader(id, passwd);
                 boolean isAdmin = loginService.hasMatchAdmin(id, passwd);
                 if (isAdmin==false&&isReader==false) {
-                    return new ModelAndView("index", "error","账号或密码错误");
+
+                    redirectAttributes.addFlashAttribute("error", "账号或密码错误！");
+                    return "redirect:/";
                 } else if(isAdmin){
                     Admin admin=new Admin();
                     admin.setAdminId(id);
                     admin.setPassword(passwd);
                     request.getSession().setAttribute("admin",admin);
-                    return new ModelAndView("admin_main","login","进入管理员页面");
+
+                    redirectAttributes.addFlashAttribute("login", "进入管理员页面！");
+                    return "redirect:/admin_main.html";
                 }else {
                     ReaderCard readerCard = loginService.findReaderCardByUserId(id);
                     ReaderInfo readerInfo=loginService.findReaderInfoByReaderId(id);
                     request.getSession().setAttribute("readercard", readerCard);
                     request.getSession().setAttribute("readerinfo", readerInfo);
-                    return new ModelAndView("reader_main","login","进入读者页面");
+
+                    redirectAttributes.addFlashAttribute("login", "进入读者页面！");
+                    return "redirect:/reader_main.html";
                 }
 
     };
@@ -81,8 +93,9 @@ public class LoginController {
 
         return new ModelAndView("admin_repasswd");
     }
+
     @RequestMapping("/admin_repasswd_do")
-    public ModelAndView reAdminPasswdDo(HttpServletRequest request,String oldPasswd,String newPasswd,String reNewPasswd ) {
+    public String reAdminPasswdDo(HttpServletRequest request,String oldPasswd,String newPasswd,String reNewPasswd,RedirectAttributes redirectAttributes ) {
 
         Admin admin=(Admin) request.getSession().getAttribute("admin");
         int id=admin.getAdminId();
@@ -91,19 +104,17 @@ public class LoginController {
         if(passwd.equals(oldPasswd)){
             boolean succ=loginService.adminRePasswd(id,newPasswd);
             if (succ){
-                ModelAndView modelAndView=new ModelAndView("admin_repasswd");
-                modelAndView.addObject("succ","密码修改成功");
-                return modelAndView;
+
+                redirectAttributes.addFlashAttribute("succ", "密码修改成功！");
+                return "redirect:/admin_repasswd.html";
             }
             else {
-                ModelAndView modelAndView=new ModelAndView("admin_repasswd");
-                modelAndView.addObject("succ","密码修改失败");
-                return modelAndView;
+                redirectAttributes.addFlashAttribute("error", "密码修改失败！");
+                return "redirect:/admin_repasswd.html";
             }
         }else {
-            ModelAndView modelAndView=new ModelAndView("admin_repasswd");
-            modelAndView.addObject("error","旧密码错误");
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("error", "旧密码错误！");
+            return "redirect:/admin_repasswd.html";
         }
     };
 

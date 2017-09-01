@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -38,22 +39,16 @@ public class ReaderController {
     }
 
     @RequestMapping("reader_delete.html")
-    public ModelAndView readerDelete(HttpServletRequest request){
+    public String readerDelete(HttpServletRequest request,RedirectAttributes redirectAttributes){
         int readerId= Integer.parseInt(request.getParameter("readerId"));
         boolean success=readerInfoService.deleteReaderInfo(readerId);
 
         if(success){
-            ArrayList<ReaderInfo> readers=readerInfoService.readerInfos();
-            ModelAndView modelAndView=new ModelAndView("admin_readers");
-            modelAndView.addObject("succ","删除成功！");
-            modelAndView.addObject("readers",readers);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("succ", "删除成功！");
+            return "redirect:/allreaders.html";
         }else {
-            ArrayList<ReaderInfo> readers=readerInfoService.readerInfos();
-            ModelAndView modelAndView= new ModelAndView("admin_readers");
-            modelAndView.addObject("error","删除失败！");
-            modelAndView.addObject("readers",readers);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("error", "删除失败！");
+            return "redirect:/allreaders.html";
         }
 
     }
@@ -68,7 +63,7 @@ public class ReaderController {
     }
 
     @RequestMapping("reader_edit_do.html")
-    public ModelAndView readerInfoEditDo(HttpServletRequest request,String name,String sex,String birth,String address,String telcode){
+    public String readerInfoEditDo(HttpServletRequest request,String name,String sex,String birth,String address,String telcode,RedirectAttributes redirectAttributes){
         int readerId= Integer.parseInt(request.getParameter("id"));
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         Date nbirth=new Date();
@@ -90,15 +85,11 @@ public class ReaderController {
         boolean succ=readerInfoService.editReaderInfo(readerInfo);
         ArrayList<ReaderInfo> readers=readerInfoService.readerInfos();
         if(succ){
-            ModelAndView modelAndView=new ModelAndView("admin_readers");
-            modelAndView.addObject("succ","读者信息修改成功");
-            modelAndView.addObject("readers",readers);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("succ", "读者信息修改成功！");
+            return "redirect:/allreaders.html";
         }else {
-            ModelAndView modelAndView=new ModelAndView("admin_readers");
-            modelAndView.addObject("error","读者信息修改失败");
-            modelAndView.addObject("readers",readers);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("error", "读者信息修改失败！");
+            return "redirect:/allreaders.html";
         }
 
     }
@@ -109,8 +100,14 @@ public class ReaderController {
         return modelAndView;
 
     }
+    @RequestMapping("reader_repasswd.html")
+    public ModelAndView readerRePasswd(){
+        ModelAndView modelAndView=new ModelAndView("reader_repasswd");
+        return modelAndView;
+
+    }
     @RequestMapping("reader_add_do.html")
-    public ModelAndView readerInfoAddDo(String name,String sex,String birth,String address,String telcode,int readerId){
+    public String readerInfoAddDo(String name,String sex,String birth,String address,String telcode,int readerId,RedirectAttributes redirectAttributes){
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         Date nbirth=new Date();
         try{
@@ -131,15 +128,11 @@ public class ReaderController {
         boolean succc=readerCardService.addReaderCard(readerInfo);
         ArrayList<ReaderInfo> readers=readerInfoService.readerInfos();
         if (succ&&succc){
-            ModelAndView modelAndView=new ModelAndView("admin_readers");
-            modelAndView.addObject("succ","添加读者成功");
-            modelAndView.addObject("readers",readers);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("succ", "添加读者信息成功！");
+            return "redirect:/allreaders.html";
         }else {
-            ModelAndView modelAndView=new ModelAndView("admin_readers");
-            modelAndView.addObject("succ","添加读者失败");
-            modelAndView.addObject("readers",readers);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("succ", "添加读者信息失败！");
+            return "redirect:/allreaders.html";
         }
 
 

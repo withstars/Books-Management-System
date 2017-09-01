@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
@@ -42,20 +43,16 @@ public class BookController {
         return modelAndView;
     }
     @RequestMapping("/deletebook.html")
-    public ModelAndView deleteBook(HttpServletRequest request){
+    public String deleteBook(HttpServletRequest request,RedirectAttributes redirectAttributes){
         long bookId=Integer.parseInt(request.getParameter("bookId"));
         int res=bookService.deleteBook(bookId);
-        ArrayList<Book> books=bookService.getAllBooks();
+
         if (res==1){
-            ModelAndView modelAndView = new ModelAndView("admin_books");
-            modelAndView.addObject("succ","删除成功！");
-            modelAndView.addObject("books",books);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("succ", "图书删除成功！");
+            return "redirect:/allbooks.html";
         }else {
-            ModelAndView modelAndView = new ModelAndView("admin_books");
-            modelAndView.addObject("error","删除失败！");
-            modelAndView.addObject("books",books);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("error", "图书删除失败！");
+            return "redirect:/allbooks.html";
         }
     }
 
@@ -67,7 +64,7 @@ public class BookController {
     }
 
     @RequestMapping("/book_add_do.html")
-    public ModelAndView addBookDo(BookAddCommand bookAddCommand){
+    public String addBookDo(BookAddCommand bookAddCommand,RedirectAttributes redirectAttributes){
         Book book=new Book();
         book.setBookId(0);
         book.setPrice(bookAddCommand.getPrice());
@@ -86,16 +83,12 @@ public class BookController {
         boolean succ=bookService.addBook(book);
         ArrayList<Book> books=bookService.getAllBooks();
         if (succ){
-            ModelAndView modelAndView= new ModelAndView("admin_books");
-            modelAndView.addObject("succ","图书添加成功");
-            modelAndView.addObject("books",books);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("succ", "图书添加成功！");
+            return "redirect:/allbooks.html";
         }
         else {
-            ModelAndView modelAndView= new ModelAndView("admin_books");
-            modelAndView.addObject("error","图书添加失败");
-            modelAndView.addObject("books",books);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("succ", "图书添加失败！");
+            return "redirect:/allbooks.html";
         }
     }
 
@@ -109,7 +102,7 @@ public class BookController {
     }
 
     @RequestMapping("/book_edit_do.html")
-    public ModelAndView bookEditDo(HttpServletRequest request,BookAddCommand bookAddCommand){
+    public String bookEditDo(HttpServletRequest request,BookAddCommand bookAddCommand,RedirectAttributes redirectAttributes){
         long bookId=Integer.parseInt( request.getParameter("id"));
         Book book=new Book();
         book.setBookId(bookId);
@@ -127,18 +120,13 @@ public class BookController {
 
 
         boolean succ=bookService.editBook(book);
-        ArrayList<Book> books=bookService.getAllBooks();
         if (succ){
-            ModelAndView modelAndView= new ModelAndView("admin_books");
-            modelAndView.addObject("succ","图书修改成功");
-            modelAndView.addObject("books",books);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("succ", "图书修改成功！");
+            return "redirect:/allbooks.html";
         }
         else {
-            ModelAndView modelAndView= new ModelAndView("admin_books");
-            modelAndView.addObject("error","图书修改失败");
-            modelAndView.addObject("books",books);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("error", "图书修改失败！");
+            return "redirect:/allbooks.html";
         }
     }
 

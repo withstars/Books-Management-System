@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li >
-                    <a href="#" >
+                    <a href="reader_repasswd.html" >
                         密码修改
                     </a>
                 </li>
