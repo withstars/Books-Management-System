@@ -60,9 +60,8 @@ public class LoginController {
                     return "redirect:/admin_main.html";
                 }else {
                     ReaderCard readerCard = loginService.findReaderCardByUserId(id);
-                    ReaderInfo readerInfo=loginService.findReaderInfoByReaderId(id);
                     request.getSession().setAttribute("readercard", readerCard);
-                    request.getSession().setAttribute("readerinfo", readerInfo);
+
 
                     redirectAttributes.addFlashAttribute("login", "进入读者页面！");
                     return "redirect:/reader_main.html";
@@ -82,11 +81,7 @@ public class LoginController {
         return new ModelAndView("reader_main");
     }
 
-    @RequestMapping("/reader_info.html")
-    public ModelAndView toReaderInfo(HttpServletResponse response) {
 
-        return new ModelAndView("reader_info");
-    }
 
     @RequestMapping("/admin_repasswd.html")
     public ModelAndView reAdminPasswd() {

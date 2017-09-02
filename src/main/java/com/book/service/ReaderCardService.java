@@ -16,5 +16,8 @@ public class ReaderCardService {
     public boolean addReaderCard(ReaderInfo readerInfo){
         return  readerCardDao.addReaderCard(readerInfo)>0;
     }
+    public boolean updatePasswd(int readerId,String passwd){
+        return readerCardDao.rePassword(readerId,passwd)>0;
+    }
 
 }

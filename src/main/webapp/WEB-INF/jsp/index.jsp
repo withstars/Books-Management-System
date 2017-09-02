@@ -209,8 +209,7 @@
             <input type="password" class="form-control" name="passwd" id="passwd">
         </div><br/><br/>
         <input type="submit" value="登陆"  class="btn btn-default">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" class="btn btn-success">找回密码</button>
+
     </form>
     <script>
         function mySubmit(flag){
