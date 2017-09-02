@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>全部图书信息</title>
+    <title>借还日志</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -72,7 +72,7 @@
 <div style="padding: 70px 550px 10px">
     <form   method="post" action="querybook.html" class="form-inline"  id="searchform">
         <div class="input-group">
-           <input type="text" placeholder="输入图书号或图书名" class="form-control" id="search" name="searchWord" class="form-control">
+            <input type="text" placeholder="输入图书号或图书名" class="form-control" id="search" name="searchWord" class="form-control">
             <span class="input-group-btn">
                             <input type="submit" value="搜索" class="btn btn-default">
             </span>
@@ -92,64 +92,53 @@
     </script>
 </div>
 <div style="position: relative;top: 10%">
-<c:if test="${!empty succ}">
-    <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert"
-                aria-hidden="true">
-            &times;
-        </button>
-        ${succ}
-    </div>
-</c:if>
-<c:if test="${!empty error}">
-    <div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert"
-                aria-hidden="true">
-            &times;
-        </button>
-        ${error}
-    </div>
-</c:if>
+    <c:if test="${!empty succ}">
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+                ${succ}
+        </div>
+    </c:if>
+    <c:if test="${!empty error}">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+                ${error}
+        </div>
+    </c:if>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">
-            全部图书
+            借还日志
         </h3>
     </div>
     <div class="panel-body">
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>书名</th>
-                <th>作者</th>
-                <th>出版社</th>
-                <th>ISBN</th>
-                <th>价格</th>
-                <th>借还</th>
-                <th>详情</th>
-                <th>编辑</th>
+                <th>流水号</th>
+                <th>图书号</th>
+                <th>读者证号</th>
+                <th>借出日期</th>
+                <th>归还日期</th>
                 <th>删除</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${books}" var="book">
-            <tr>
-                <td><c:out value="${book.name}"></c:out></td>
-                <td><c:out value="${book.author}"></c:out></td>
-                <td><c:out value="${book.publish}"></c:out></td>
-                <td><c:out value="${book.isbn}"></c:out></td>
-                <td><c:out value="${book.price}"></c:out></td>
-                <c:if test="${book.state==1}">
-                    <td><a href="lendbook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-primary btn-xs">借阅</button></a></td>
-                </c:if>
-                <c:if test="${book.state==0}">
-                    <td><a href="returnbook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-primary btn-xs">归还</button></a></td>
-                </c:if>
-                <td><a href="bookdetail.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-success btn-xs">详情</button></a></td>
-                <td><a href="updatebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-info btn-xs">编辑</button></a></td>
-                <td><a href="deletebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-danger btn-xs">删除</button></a></td>
-            </tr>
+            <c:forEach items="${list}" var="alog">
+                <tr>
+                    <td><c:out value="${alog.sernum}"></c:out></td>
+                    <td><c:out value="${alog.bookId}"></c:out></td>
+                    <td><c:out value="${alog.readerId}"></c:out></td>
+                    <td><c:out value="${alog.lendDate}"></c:out></td>
+                    <td><c:out value="${alog.backDate}"></c:out></td>
+                    <td><a href="deletebook.html?bookId=<c:out value="${alog.sernum}"></c:out>"><button type="button" class="btn btn-danger btn-xs">删除</button></a></td>
+                </tr>
             </c:forEach>
             </tbody>
         </table>

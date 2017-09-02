@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 君行天下
@@ -49,7 +50,7 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">借还日志</a></li>
+                        <li><a href="lendlist.html">借还日志</a></li>
                     </ul>
                 </li>
                 <li >
@@ -115,7 +116,13 @@
                 </tr>
                 <tr>
                     <th>状态</th>
-                    <td>${detail.state}</td>
+                    <c:if test="${detail.state==1}">
+                        <td>在馆</td>
+                    </c:if>
+                    <c:if test="${detail.state==0}">
+                        <td>借出</td>
+                    </c:if>
+
                 </tr>
                 </tbody>
             </table>
