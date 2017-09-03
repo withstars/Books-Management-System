@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb21d46d-7397-43b8-9c75-8ce3c6b2be03" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/book/web/ReaderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/book/web/ReaderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_books.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_books.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_lend_list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_lend_list.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_lend_list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_lend_list.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_repasswd.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_repasswd.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,12 +24,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_lend_list.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin_lend_list.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_lend_list.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="410">
-              <caret line="61" column="17" lean-forward="true" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+              <caret line="61" column="17" lean-forward="false" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="323">
+                <caret line="17" column="82" lean-forward="false" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="82" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -44,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_main.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="182">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="38" />
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -123,7 +130,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_book_query.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/book/dao/BookDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/book/web/BookController.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_repasswd.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/book/web/ReaderController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_lend_list.jsp" />
@@ -131,6 +137,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_books.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reader_main.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_lend_list.jsp" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -418,12 +425,12 @@
       <workItem from="1504142035375" duration="680000" />
       <workItem from="1504176789725" duration="6611000" />
       <workItem from="1504254645672" duration="29961000" />
-      <workItem from="1504397388109" duration="14723000" />
+      <workItem from="1504397388109" duration="15394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88425000" />
+    <option name="totallyTimeSpent" value="89096000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -886,17 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="209">
-            <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_repasswd.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -967,7 +963,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_main.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="38" />
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -983,8 +979,19 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_lend_list.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
-          <caret line="61" column="17" lean-forward="true" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+          <caret line="61" column="17" lean-forward="false" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="323">
+            <caret line="17" column="82" lean-forward="false" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="82" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
