@@ -80,13 +80,7 @@
         </div>
     </div>
 </nav>
-<div id="newsa">
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>图书馆2017年暑假闭馆通知</span> &nbsp;&nbsp;&nbsp;<time>2017-6-20</time></a><br/><br/>
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>图书馆第八届考研经验交流大会圆满结束</span>&nbsp;&nbsp;&nbsp;<time>2017-6-7</time></a><br/><br/>
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>扬中华之美德 行传统毕业礼</span>&nbsp;&nbsp;&nbsp;<time>2017-6-6</time></a><br/><br/>
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>当代国学社举办中北大学首届书画篆刻展</span>&nbsp;&nbsp;&nbsp;<time>2017-5-8</time></a><br/><br/>
-    <a href="http://lib.nuc.edu.cn/new/View.action?objid=1023&cstype=news" style="color:midnightblue "><span>关于和《百家讲坛》主讲人钱斌老师座谈的通知</span>&nbsp;&nbsp;&nbsp;<time>2017-5-3</time></a><br/>
-</div>
+
 
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

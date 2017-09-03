@@ -162,6 +162,8 @@ public class ReaderController {
             if(passwd.equals(oldPasswd)){
                 boolean succ=readerCardService.updatePasswd(readerId,newPasswd);
                 if (succ){
+                    ReaderCard readerCardNew = loginService.findReaderCardByUserId(readerId);
+                    request.getSession().setAttribute("readercard", readerCardNew);
                     redirectAttributes.addFlashAttribute("succ", "密码修改成功！");
                     return "redirect:/reader_repasswd.html";
                 }else {

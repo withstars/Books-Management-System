@@ -91,7 +91,6 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>流水号</th>
                 <th>图书号</th>
                 <th>借出日期</th>
                 <th>归还日期</th>
@@ -101,7 +100,6 @@
             <tbody>
             <c:forEach items="${list}" var="alog">
                 <tr>
-                    <td><c:out value="${alog.sernum}"></c:out></td>
                     <td><c:out value="${alog.bookId}"></c:out></td>
                     <td><c:out value="${alog.lendDate}"></c:out></td>
                     <td><c:out value="${alog.backDate}"></c:out></td>
