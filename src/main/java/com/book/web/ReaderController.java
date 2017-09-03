@@ -76,37 +76,65 @@ public class ReaderController {
         ModelAndView modelAndView=new ModelAndView("admin_reader_edit");
         modelAndView.addObject("readerInfo",readerInfo);
         return modelAndView;
-
     }
 
     @RequestMapping("reader_edit_do.html")
     public String readerInfoEditDo(HttpServletRequest request,String name,String sex,String birth,String address,String telcode,RedirectAttributes redirectAttributes){
         int readerId= Integer.parseInt(request.getParameter("id"));
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        Date nbirth=new Date();
-        try{
-            java.util.Date date=sdf.parse(birth);
-            nbirth=date;
-        }catch (ParseException e){
-            e.printStackTrace();
+        ReaderCard readerCard = loginService.findReaderCardByUserId(readerId);
+        String oldName=readerCard.getName();
+        if(!oldName.equals(name)){
+            boolean succo=readerCardService.updateName(readerId,name);
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            Date nbirth=new Date();
+            try{
+                java.util.Date date=sdf.parse(birth);
+                nbirth=date;
+            }catch (ParseException e){
+                e.printStackTrace();
+            }
+            ReaderInfo readerInfo=new ReaderInfo();
+            readerInfo.setAddress(address);
+            readerInfo.setBirth(nbirth);
+            readerInfo.setName(name);
+            readerInfo.setReaderId(readerId);
+            readerInfo.setTelcode(telcode);
+            readerInfo.setSex(sex);
+            boolean succ=readerInfoService.editReaderInfo(readerInfo);
+            if(succo&&succ){
+                redirectAttributes.addFlashAttribute("succ", "读者信息修改成功！");
+                return "redirect:/allreaders.html";
+            }else {
+                redirectAttributes.addFlashAttribute("error", "读者信息修改失败！");
+                return "redirect:/allreaders.html";
+            }
         }
+        else {
+            System.out.println("部分修改");
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            Date nbirth=new Date();
+            try{
+                java.util.Date date=sdf.parse(birth);
+                nbirth=date;
+            }catch (ParseException e){
+                e.printStackTrace();
+            }
+            ReaderInfo readerInfo=new ReaderInfo();
+            readerInfo.setAddress(address);
+            readerInfo.setBirth(nbirth);
+            readerInfo.setName(name);
+            readerInfo.setReaderId(readerId);
+            readerInfo.setTelcode(telcode);
+            readerInfo.setSex(sex);
 
-        ReaderInfo readerInfo=new ReaderInfo();
-        readerInfo.setAddress(address);
-        readerInfo.setBirth(nbirth);
-        readerInfo.setName(name);
-        readerInfo.setReaderId(readerId);
-        readerInfo.setTelcode(telcode);
-        readerInfo.setSex(sex);
-
-        boolean succ=readerInfoService.editReaderInfo(readerInfo);
-        ArrayList<ReaderInfo> readers=readerInfoService.readerInfos();
-        if(succ){
-            redirectAttributes.addFlashAttribute("succ", "读者信息修改成功！");
-            return "redirect:/allreaders.html";
-        }else {
-            redirectAttributes.addFlashAttribute("error", "读者信息修改失败！");
-            return "redirect:/allreaders.html";
+            boolean succ=readerInfoService.editReaderInfo(readerInfo);
+            if(succ){
+                redirectAttributes.addFlashAttribute("succ", "读者信息修改成功！");
+                return "redirect:/allreaders.html";
+            }else {
+                redirectAttributes.addFlashAttribute("error", "读者信息修改失败！");
+                return "redirect:/allreaders.html";
+            }
         }
 
     }
@@ -129,20 +157,31 @@ public class ReaderController {
         ReaderCard readerCard=(ReaderCard) request.getSession().getAttribute("readercard");
         int readerId=readerCard.getReaderId();
         String passwd=readerCard.getPasswd();
-        if(passwd.equals(oldPasswd)){
-            boolean succ=readerCardService.updatePasswd(readerId,newPasswd);
-            if (succ){
-                redirectAttributes.addFlashAttribute("succ", "密码修改成功！");
-                return "redirect:/reader_repasswd.html";
+
+        if (newPasswd.equals(reNewPasswd)){
+            if(passwd.equals(oldPasswd)){
+                boolean succ=readerCardService.updatePasswd(readerId,newPasswd);
+                if (succ){
+                    redirectAttributes.addFlashAttribute("succ", "密码修改成功！");
+                    return "redirect:/reader_repasswd.html";
+                }else {
+                    redirectAttributes.addFlashAttribute("succ", "密码修改失败！");
+                    return "redirect:/reader_repasswd.html";
+                }
+
             }else {
-                redirectAttributes.addFlashAttribute("succ", "密码修改失败！");
+                redirectAttributes.addFlashAttribute("error", "修改失败,原密码错误");
                 return "redirect:/reader_repasswd.html";
             }
-
         }else {
-            redirectAttributes.addFlashAttribute("error", "修改失败,原密码错误");
+            redirectAttributes.addFlashAttribute("error", "修改失败,两次输入的新密码不相同");
             return "redirect:/reader_repasswd.html";
         }
+
+
+
+
+
 
     }
     //管理员功能--读者信息添加
@@ -188,34 +227,69 @@ public class ReaderController {
     @RequestMapping("reader_edit_do_r.html")
     public String readerInfoEditDoReader(HttpServletRequest request,String name,String sex,String birth,String address,String telcode,RedirectAttributes redirectAttributes){
         ReaderCard readerCard=(ReaderCard) request.getSession().getAttribute("readercard");
+        if (!readerCard.getName().equals(name)){
+            boolean succo=readerCardService.updateName(readerCard.getReaderId(),name);
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            Date nbirth=new Date();
+            try{
+                java.util.Date date=sdf.parse(birth);
+                nbirth=date;
+            }catch (ParseException e){
+                e.printStackTrace();
+            }
 
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        Date nbirth=new Date();
-        try{
-            java.util.Date date=sdf.parse(birth);
-            nbirth=date;
-        }catch (ParseException e){
-            e.printStackTrace();
-        }
+            ReaderInfo readerInfo=new ReaderInfo();
+            readerInfo.setAddress(address);
+            readerInfo.setBirth(nbirth);
+            readerInfo.setName(name);
+            readerInfo.setReaderId(readerCard.getReaderId());
+            readerInfo.setTelcode(telcode);
+            readerInfo.setSex(sex);
 
-        ReaderInfo readerInfo=new ReaderInfo();
-        readerInfo.setAddress(address);
-        readerInfo.setBirth(nbirth);
-        readerInfo.setName(name);
-        readerInfo.setReaderId(readerCard.getReaderId());
-        readerInfo.setTelcode(telcode);
-        readerInfo.setSex(sex);
+            boolean succ=readerInfoService.editReaderInfo(readerInfo);
+            if(succ&&succo){
+                ReaderCard readerCardNew = loginService.findReaderCardByUserId(readerCard.getReaderId());
+                request.getSession().setAttribute("readercard", readerCardNew);
+                redirectAttributes.addFlashAttribute("succ", "信息修改成功！");
+                return "redirect:/reader_info.html";
+            }else {
+                redirectAttributes.addFlashAttribute("error", "信息修改失败！");
+                return "redirect:/reader_info.html";
+            }
 
-        boolean succ=readerInfoService.editReaderInfo(readerInfo);
-        if(succ){
-            ReaderCard readerCardNew = loginService.findReaderCardByUserId(readerCard.getReaderId());
-            request.getSession().setAttribute("readercard", readerCardNew);
-            redirectAttributes.addFlashAttribute("succ", "信息修改成功！");
-            return "redirect:/reader_info.html";
+
+
         }else {
-            redirectAttributes.addFlashAttribute("error", "信息修改失败！");
-            return "redirect:/reader_info.html";
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            Date nbirth=new Date();
+            try{
+                java.util.Date date=sdf.parse(birth);
+                nbirth=date;
+            }catch (ParseException e){
+                e.printStackTrace();
+            }
+
+            ReaderInfo readerInfo=new ReaderInfo();
+            readerInfo.setAddress(address);
+            readerInfo.setBirth(nbirth);
+            readerInfo.setName(name);
+            readerInfo.setReaderId(readerCard.getReaderId());
+            readerInfo.setTelcode(telcode);
+            readerInfo.setSex(sex);
+
+            boolean succ=readerInfoService.editReaderInfo(readerInfo);
+            if(succ){
+                ReaderCard readerCardNew = loginService.findReaderCardByUserId(readerCard.getReaderId());
+                request.getSession().setAttribute("readercard", readerCardNew);
+                redirectAttributes.addFlashAttribute("succ", "信息修改成功！");
+                return "redirect:/reader_info.html";
+            }else {
+                redirectAttributes.addFlashAttribute("error", "信息修改失败！");
+                return "redirect:/reader_info.html";
+            }
         }
+
+
 
     }
 }

@@ -1,6 +1,7 @@
 package com.book.web;
 
 import com.book.domain.Book;
+import com.book.domain.ReaderCard;
 import com.book.service.BookService;
 import com.book.service.LendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,15 @@ public class LendController {
         modelAndView.addObject("list",lendService.lendList());
         return modelAndView;
     }
+    @RequestMapping("/mylend.html")
+    public ModelAndView myLend(HttpServletRequest request){
+        ReaderCard readerCard=(ReaderCard) request.getSession().getAttribute("readercard");
+        ModelAndView modelAndView=new ModelAndView("reader_lend_list");
+        modelAndView.addObject("list",lendService.myLendList(readerCard.getReaderId()));
+        return modelAndView;
+    }
+
+
 
 
 }

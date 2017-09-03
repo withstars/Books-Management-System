@@ -26,7 +26,6 @@ public class BookController {
         boolean exist=bookService.matchBook(searchWord);
         if (exist){
             ArrayList<Book> books = bookService.queryBook(searchWord);
-
             ModelAndView modelAndView = new ModelAndView("admin_books");
             modelAndView.addObject("books",books);
             return modelAndView;
@@ -35,6 +34,26 @@ public class BookController {
             return new ModelAndView("admin_books","error","没有匹配的图书");
         }
     }
+    @RequestMapping("/reader_querybook.html")
+    public ModelAndView readerQueryBook(){
+       return new ModelAndView("reader_book_query");
+
+    }
+    @RequestMapping("/reader_querybook_do.html")
+    public String readerQueryBookDo(HttpServletRequest request,String searchWord,RedirectAttributes redirectAttributes){
+        boolean exist=bookService.matchBook(searchWord);
+        if (exist){
+            ArrayList<Book> books = bookService.queryBook(searchWord);
+            redirectAttributes.addFlashAttribute("books", books);
+            return "redirect:/reader_querybook.html";
+        }
+        else{
+            redirectAttributes.addFlashAttribute("error", "没有匹配的图书！");
+            return "redirect:/reader_querybook.html";
+        }
+
+    }
+
     @RequestMapping("/allbooks.html")
     public ModelAndView allBook(){
         ArrayList<Book> books=bookService.getAllBooks();
@@ -139,6 +158,18 @@ public class BookController {
         modelAndView.addObject("detail",book);
         return modelAndView;
     }
+
+
+
+    @RequestMapping("/readerbookdetail.html")
+    public ModelAndView readerBookDetail(HttpServletRequest request){
+        long bookId=Integer.parseInt(request.getParameter("bookId"));
+        Book book=bookService.getBook(bookId);
+        ModelAndView modelAndView=new ModelAndView("reader_book_detail");
+        modelAndView.addObject("detail",book);
+        return modelAndView;
+    }
+
 
 
 }

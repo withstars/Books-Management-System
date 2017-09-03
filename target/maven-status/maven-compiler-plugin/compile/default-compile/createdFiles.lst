@@ -1,5 +1,6 @@
 com\book\dao\ReaderInfoDao.class
 com\book\domain\ReaderInfo.class
+com\book\dao\LendDao$2.class
 com\book\dao\ReaderInfoDao$1.class
 com\book\dao\ReaderCardDao$1.class
 com\book\dao\BookDao$3.class

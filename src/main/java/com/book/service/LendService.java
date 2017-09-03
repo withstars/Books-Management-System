@@ -27,4 +27,8 @@ public class LendService {
     public ArrayList<Lend> lendList(){
         return lendDao.lendList();
     }
+
+    public ArrayList<Lend> myLendList(int readerId){
+        return lendDao.myLendList(readerId);
+    }
 }

@@ -20,6 +20,9 @@ public class ReaderCardDao {
     private final static String FIND_READER_BY_USERID="select reader_id, name, passwd, card_state from reader_card where reader_id = ? ";
     private final static String RE_PASSWORD_SQL="UPDATE reader_card set passwd = ? where reader_id = ? ";
     private final static String ADD_READERCARD_SQL="INSERT INTO reader_card (reader_id,name) values ( ? , ?)";
+    private final static String UPDATE_READER_NAME_SQL="UPDATE reader_card set name = ? where reader_id = ?";
+
+
     @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -54,5 +57,9 @@ public class ReaderCardDao {
         int readerId=readerInfo.getReaderId();
 
         return jdbcTemplate.update(ADD_READERCARD_SQL,new Object[]{readerId,name});
+    }
+
+    public int updateName(int readerId,String name){
+        return jdbcTemplate.update(UPDATE_READER_NAME_SQL,new Object[]{name,readerId,});
     }
 }

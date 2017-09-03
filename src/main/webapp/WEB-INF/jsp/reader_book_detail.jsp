@@ -1,15 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 君行天下
-  Date: 2017/7/31
-  Time: 11:40
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>${readercard.name}的主页</title>
+    <title>《 ${detail.name}》</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
@@ -57,64 +50,70 @@
         </div>
     </div>
 </nav>
-<c:if test="${!empty succ}">
-    <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert"
-                aria-hidden="true">
-            &times;
-        </button>
-            ${succ}
-    </div>
-</c:if>
-<c:if test="${!empty error}">
-    <div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert"
-                aria-hidden="true">
-            &times;
-        </button>
-            ${error}
-    </div>
-</c:if>
-<div class="col-xs-5 col-md-offset-3">
-    <div class="panel panel-default">
+
+<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 3%">
+    <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">
-                我的信息
-            </h3>
+            <h3 class="panel-title">《 ${detail.name}》</h3>
         </div>
         <div class="panel-body">
             <table class="table table-hover">
                 <tr>
-                    <th width="20%">读者证号</th>
-                    <td>${readerinfo.readerId}</td>
+                    <th width="15%">书名</th>
+                    <td>${detail.name}</td>
                 </tr>
                 <tr>
-                    <th>姓名</th>
-                    <td>${readerinfo.name}</td>
+                    <th>作者</th>
+                    <td>${detail.author}</td>
                 </tr>
                 <tr>
-                    <th>性别</th>
-                    <td>${readerinfo.sex}</td>
+                    <th>出版社</th>
+                    <td>${detail.publish}</td>
                 </tr>
                 <tr>
-                    <th>生日</th>
-                    <td>${readerinfo.birth}</td>
+                    <th>ISBN</th>
+                    <td>${detail.isbn}</td>
                 </tr>
                 <tr>
-                    <th>地址</th>
-                    <td>${readerinfo.address}</td>
+                    <th>简介</th>
+                    <td>${detail.introduction}</td>
                 </tr>
                 <tr>
-                    <th>电话</th>
-                    <td>${readerinfo.telcode}</td>
+                    <th>语言</th>
+                    <td>${detail.language}</td>
+                </tr>
+                <tr>
+                    <th>价格</th>
+                    <td>${detail.price}</td>
+                </tr>
+                <tr>
+                    <th>出版日期</th>
+                    <td>${detail.pubdate}</td>
+                </tr>
+                <tr>
+                    <th>分类号</th>
+                    <td>${detail.classId}</td>
+                </tr>
+                <tr>
+                    <th>书架号</th>
+                    <td>${detail.pressmark}</td>
+                </tr>
+                <tr>
+                    <th>状态</th>
+                    <c:if test="${detail.state==1}">
+                        <td>在馆</td>
+                    </c:if>
+                    <c:if test="${detail.state==0}">
+                        <td>借出</td>
+                    </c:if>
+
                 </tr>
                 </tbody>
             </table>
         </div>
-        <a class="btn btn-success btn-sm" href="reader_info_edit.html" role="button">修改</a>
     </div>
-</div>
 
+</div>
 
 </body>
 </html>

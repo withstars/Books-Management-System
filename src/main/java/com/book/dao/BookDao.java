@@ -27,12 +27,14 @@ public class BookDao {
     private final static String EDIT_BOOK_SQL="update book_info set name= ? ,author= ? ,publish= ? ,ISBN= ? ,introduction= ? ,language= ? ,price= ? ,pubdate= ? ,class_id= ? ,pressmark= ? ,state= ?  where book_id= ? ;";
     private final static String QUERY_ALL_BOOKS_SQL="SELECT * FROM book_info ";
     private final static String QUERY_BOOK_SQL="SELECT * FROM book_info WHERE book_id like  ?  or name like ?   ";
+    //查询匹配图书的个数
     private final static String MATCH_BOOK_SQL="SELECT count(*) FROM book_info WHERE book_id like ?  or name like ?  ";
+    //根据书号查询图书
     private final static String GET_BOOK_SQL="SELECT * FROM book_info where book_id = ? ";
+
     public int matchBook(String searchWord){
         String swcx="%"+searchWord+"%";
         return jdbcTemplate.queryForObject(MATCH_BOOK_SQL,new Object[]{swcx,swcx},Integer.class);
-
     }
 
     public ArrayList<Book> queryBook(String sw){

@@ -61,8 +61,6 @@ public class LoginController {
                 }else {
                     ReaderCard readerCard = loginService.findReaderCardByUserId(id);
                     request.getSession().setAttribute("readercard", readerCard);
-
-
                     redirectAttributes.addFlashAttribute("login", "进入读者页面！");
                     return "redirect:/reader_main.html";
                 }

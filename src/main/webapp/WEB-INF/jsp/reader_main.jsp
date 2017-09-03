@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li >
-                    <a href="#" >
+                    <a href="reader_querybook.html" >
                         图书查询
                     </a>
                 </li>
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li >
-                    <a href="#" >
+                    <a href="mylend.html" >
                         我的借还
                     </a>
                 </li>
@@ -49,8 +49,6 @@
                     </a>
                 </li>
             </ul>
-
-
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="reader_info.html"><span class="glyphicon glyphicon-user"></span>&nbsp;${readercard.name}，已登录</a></li>
                 <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>&nbsp;退出</a></li>
@@ -58,5 +56,7 @@
         </div>
     </div>
 </nav>
+
+
 </body>
 </html>
