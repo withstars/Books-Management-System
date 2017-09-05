@@ -10,6 +10,7 @@
 ### 使用方式
 本项目基于maven构建，可参考maven项目使用相关教程。
 ### 项目预览
+<img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/7.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/1.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/2.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/3.PNG">
