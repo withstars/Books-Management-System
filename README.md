@@ -1,6 +1,5 @@
 # 图书管理系统
-## 基于spring+spring mvc+bootstrap
-## maven方式构建
+## 基于spring+spring mvc+bootstrap(maven构建)
 ### 系统简介
 本图书管理系统基于spring,spring mvc,数据库为mysql。前端使用了Bootstrap。 
 ### 系统功能
