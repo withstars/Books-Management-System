@@ -181,13 +181,13 @@
     </ol>
     <div class="carousel-inner">
         <div class="item active">
-            <img src="img/218250-106.jpg" alt="第一张">
+            <img src="img/82839-106.jpg" alt="第一张">
         </div>
         <div class="item">
-            <img src="img/239527-106.jpg" alt="第二张">
+            <img src="img/105905-106.jpg" alt="第二张">
         </div>
         <div class="item">
-            <img src="img/276773-106.jpg" alt="第三张">
+            <img src="img/296494-106.jpg" alt="第三张">
         </div>
 
     </div>
@@ -199,52 +199,66 @@
     </a>
 </div>
 <div  id="login">
-    <form class="form-inline"  method="post"  id="form" action="main.html">
+    <div class="form-inline" >
             <div class="input-group">
                 <span class="input-group-addon">账号</span>
-                <input type="text" class="form-control" name="id" id="readerId">
-            </div><em style="text-align: right;color: red" id="idts"></em><br/><br/>
+                <input type="text" class="form-control"  id="id">
+            </div><br/><br/>
         <div class="input-group">
             <span class="input-group-addon">密码</span>
-            <input type="password" class="form-control" name="passwd" id="passwd">
-        </div><br/><br/>
-        <input type="submit" value="登陆"  class="btn btn-default">
+            <input type="password" class="form-control"  id="passwd">
+        </div><br/>
+        <p style="text-align: right;color: red;position: absolute" id="info"></p><br/>
+        <button id="loginButton"  class="btn btn-default">登陆
+        </button>
 
-    </form>
+    </div>
     <script>
-        function mySubmit(flag){
-            return flag;
-        }
-        $("#readerId").keyup(
+        $("#id").keyup(
             function () {
-                if(isNaN($("#readerId").val())){
-                    $("#idts").text("账号必须为数字");
+                if(isNaN($("#id").val())){
+                    $("#info").text("提示:账号只能为数字");
                 }
                 else {
-                    $("#idts").text("");
+                    $("#info").text("");
                 }
             }
         )
 
-
-
-
-        $("#form").submit(function () {
-            if($("#readerId").val()==''&&$("#passwd").val()==''){
-                alert("账号和密码不能为空");
-                return mySubmit(false);
+        $("#loginButton").click(function () {
+            if($("#id").val()==''&&$("#passwd").val()==''){
+                $("#info").text("提示:账号和密码不能为空");
             }
-            else if ($("#readerId").val()==''){
-                alert("账号不能为空");
-                return mySubmit(false);
+            else if ($("#id").val()==''){
+                $("#info").text("提示:账号不能为空");
             }
             else if($("#passwd").val()==''){
-                alert("密码不能为空");
-                return mySubmit(false);
-            };
-            if(isNaN($("#readerId").val())){
-               alert("账号必须为数字");
-                return mySubmit(false);
+                $("#info").text("提示:密码不能为空");
+            }
+            else if(isNaN($("#id").val())){
+                $("#info").text("提示:账号必须为数字");
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "/api/loginCheck",
+                    data: {
+                        id:$("#id").val() ,
+                        passwd: $("#passwd").val()
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if(data.stateCode.trim() == "0") {
+                            $("#info").text("提示:账号或密码错误！");
+                        } else if(data.stateCode.trim() == "1") {
+                            $("#info").text("提示:登陆成功，跳转中...");
+                            window.location.href="/admin_main.html";
+                        } else if(data.stateCode.trim() == "2"){
+                            $("#info").text("提示:登陆成功，跳转中...");
+                            window.location.href="/reader_main.html";
+                        }
+                    }
+                });
             }
         })
     </script>
