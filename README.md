@@ -7,11 +7,11 @@
 ### 数据库
 > 本系统共有六张数据表。admin为管理员表，book_info为图书信息表，class_info为分类信息表，lend_list为借还信息表，reader_card为读者证表,reader_info为读者信息表。
 ### 如何使用
-> 1. * git clone https://github.com/withstars/Books-Management-System * 
->   * cd  Books-Management-System *
+> 1. *git clone https://github.com/withstars/Books-Management-System* 
+>   *cd  Books-Management-System*
 >   或
->   * 下载zip文件 *
->   * 解压文件，进入解压后的文件夹 * 
+>   *下载zip文件*
+>   *解压文件，进入解压后的文件夹* 
 >2. 将sql文件导入数据库。
 >3. 用IDEA打开解压后的文件夹。
 >4. 配置src\main\resources\book-context.xml中的数据库设置项。
