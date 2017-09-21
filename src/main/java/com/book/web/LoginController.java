@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 
 //标注为一个Spring mvc的Controller
 @Controller
@@ -41,30 +44,30 @@ public class LoginController {
 
     //负责处理loginCheck.html请求
     //请求参数会根据参数名称默认契约自动绑定到相应方法的入参中
-    @RequestMapping("/main.html")
-    public String loginCheck(HttpServletRequest request, int id,String passwd,RedirectAttributes redirectAttributes){
-
+    @RequestMapping(value = "/api/loginCheck", method = RequestMethod.POST)
+    public @ResponseBody Object loginCheck(HttpServletRequest request){
+        int id=Integer.parseInt(request.getParameter("id"));
+        String passwd = request.getParameter("passwd");
                 boolean isReader = loginService.hasMatchReader(id, passwd);
                 boolean isAdmin = loginService.hasMatchAdmin(id, passwd);
+        HashMap<String, String> res = new HashMap<String, String>();
                 if (isAdmin==false&&isReader==false) {
-
-                    redirectAttributes.addFlashAttribute("error", "账号或密码错误！");
-                    return "redirect:/";
+                    res.put("stateCode", "0");
+                    res.put("msg","账号或密码错误！");
                 } else if(isAdmin){
                     Admin admin=new Admin();
                     admin.setAdminId(id);
                     admin.setPassword(passwd);
                     request.getSession().setAttribute("admin",admin);
-
-                    redirectAttributes.addFlashAttribute("login", "进入管理员页面！");
-                    return "redirect:/admin_main.html";
+                    res.put("stateCode", "1");
+                    res.put("msg","管理员登陆成功！");
                 }else {
                     ReaderCard readerCard = loginService.findReaderCardByUserId(id);
                     request.getSession().setAttribute("readercard", readerCard);
-                    redirectAttributes.addFlashAttribute("login", "进入读者页面！");
-                    return "redirect:/reader_main.html";
+                    res.put("stateCode", "2");
+                    res.put("msg","读者登陆成功！");
                 }
-
+        return res;
     };
     @RequestMapping("/admin_main.html")
     public ModelAndView toAdminMain(HttpServletResponse response) {
