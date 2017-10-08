@@ -1,5 +1,5 @@
 # 图书管理系统
-#### 基于Spring+Spring MVC+Bootstrap(Maven构建)<br/>
+#### 基于Spring+Spring MVC+Bootstrap(Maven构建)
 [![Build Status](https://travis-ci.org/withstars/Books-Management-System.svg?branch=master)](https://travis-ci.org/withstars/Books-Management-System)
 ### 系统简介
 本图书管理系统基于spring,spring mvc,数据库为mysql。前端使用了Bootstrap。 
@@ -11,8 +11,8 @@
 1. *git clone https://github.com/withstars/Books-Management-System* <br/>
 	*cd  Books-Management-System*<br/>
 	或<br/>
-	*下载zip文件*<br/>
-	*解压文件，进入解压后的文件夹* <br/>
+	下载zip文件<br/>
+	解压文件，进入解压后的文件夹 <br/>
 2. 启动数据库服务,将sql文件导入数据库。
 3. 用IDEA打开解压后的文件夹。
 4. 配置src\main\resources\book-context.xml中的数据库设置项。
@@ -21,7 +21,7 @@
 8. 点击Maven Projects\book\Plugins\jetty\jetty:run启动jetty服务器。<br/>
    默认端口号为9000。可在pom.xml中修改。
 9. 待服务器启动完毕后，在浏览器地址栏输入 http://localhost:9000 进入该系统。
-### 项目预览
+### 项目截图
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/7.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/1.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/2.PNG">
