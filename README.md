@@ -1,5 +1,5 @@
 # 图书管理系统
-#### 基于Spring+Spring MVC+Bootstrap(Maven构建)
+#### 基于Spring+Spring MVC(Maven方式构建)
 [![Build Status](https://travis-ci.org/withstars/Books-Management-System.svg?branch=master)](https://travis-ci.org/withstars/Books-Management-System)
 ### 系统简介
 本图书管理系统基于spring,spring mvc,数据库为mysql。前端使用了Bootstrap。 
