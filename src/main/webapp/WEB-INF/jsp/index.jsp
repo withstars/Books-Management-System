@@ -25,13 +25,13 @@
         #login{
             float: left;
            height: 250px;
-            width: 330px;
+            width: 250px;
             margin-left: 6%;
             margin-top: 9%;
             display: inline;
             z-index: 999;
         }
-        body{
+        * {
             padding:0;
             margin:0;
         }
@@ -209,9 +209,8 @@
             <input type="password" class="form-control"  id="passwd">
         </div><br/>
         <p style="text-align: right;color: red;position: absolute" id="info"></p><br/>
-        <button id="loginButton"  class="btn btn-default">登陆
+        <button id="loginButton"  class="btn btn-primary  btn-block">登陆
         </button>
-
     </div>
     <script>
         $("#id").keyup(
