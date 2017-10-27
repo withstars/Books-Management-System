@@ -9,25 +9,26 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>图书馆</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>图书馆首页</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" ></script>
+    <script src="js/js.cookie.js"></script>
     <style>
         #myCarousel{
             margin-left: 2%;
-            width: 900px;
-            height: 80%;
+            width: 65%;
+            height: 75%;
             float: left;
             z-index: 999;
             display: inline;
         }
         #login{
             float: left;
-           height: 250px;
-            width: 250px;
+           height: 50%;
+            width: 18%;
             margin-left: 6%;
-            margin-top: 9%;
+            margin-top: 6%;
             display: inline;
             z-index: 999;
         }
@@ -199,15 +200,21 @@
     </a>
 </div>
 <div  id="login">
-    <div class="form-inline" >
-            <div class="input-group">
-                <span class="input-group-addon">账号</span>
-                <input type="text" class="form-control"  id="id">
-            </div><br/><br/>
-        <div class="input-group">
-            <span class="input-group-addon">密码</span>
-            <input type="password" class="form-control"  id="passwd">
-        </div><br/>
+    <div class="form-group">
+        <label for="id">用户名</label>
+        <input type="text" class="form-control" id="id" placeholder="请输入用户名">
+    </div>
+    <div class="form-group">
+        <label for="passwd">密码</label>
+        <input type="password" class="form-control" id="passwd" placeholder="请输入密码">
+    </div>
+    <div class="checkbox text-left">
+        <label>
+            <input type="checkbox" id="remember">记住密码
+        </label>
+        <a style="margin-left: 100px" href="#">忘记密码?</a>
+    </div>
+
         <p style="text-align: right;color: red;position: absolute" id="info"></p><br/>
         <button id="loginButton"  class="btn btn-primary  btn-block">登陆
         </button>
@@ -223,18 +230,45 @@
                 }
             }
         )
+        // 记住登录信息
+        function rememberLogin(username, password, checked) {
+            Cookies.set('loginStatus', {
+                username: username,
+                password: password,
+                remember: checked
+            }, {expires: 30, path: ''})
+        }
+        // 若选择记住登录信息，则进入页面时设置登录信息
+        function setLoginStatus() {
+            var loginStatusText = Cookies.get('loginStatus')
+            if (loginStatusText) {
+                var loginStatus
+                try {
+                    loginStatus = JSON.parse(loginStatusText);
+                    $('#id').val(loginStatus.username);
+                    $('#passwd').val(loginStatus.password);
+                    $("#remember").prop('checked',true);
+                } catch (__) {}
+            }
+        }
 
+        // 设置登录信息
+        setLoginStatus();
         $("#loginButton").click(function () {
-            if($("#id").val()==''&&$("#passwd").val()==''){
+            var id =$("#id").val();
+            var passwd=$("#passwd").val();
+            var remember=$("#remember").prop('checked');
+
+            if( id=='' && passwd==''){
                 $("#info").text("提示:账号和密码不能为空");
             }
-            else if ($("#id").val()==''){
+            else if ( id ==''){
                 $("#info").text("提示:账号不能为空");
             }
-            else if($("#passwd").val()==''){
+            else if( passwd ==''){
                 $("#info").text("提示:密码不能为空");
             }
-            else if(isNaN($("#id").val())){
+            else if(isNaN( id )){
                 $("#info").text("提示:账号必须为数字");
             }
             else {
@@ -242,8 +276,8 @@
                     type: "POST",
                     url: "/api/loginCheck",
                     data: {
-                        id:$("#id").val() ,
-                        passwd: $("#passwd").val()
+                        id:id ,
+                        passwd: passwd
                     },
                     dataType: "json",
                     success: function(data) {
@@ -253,13 +287,21 @@
                             $("#info").text("提示:登陆成功，跳转中...");
                             window.location.href="/admin_main.html";
                         } else if(data.stateCode.trim() == "2"){
+                            if(remember){
+                                rememberLogin(id,passwd,remember);
+                            }else {
+                                Cookies.remove('loginStatus');
+                            }
                             $("#info").text("提示:登陆成功，跳转中...");
                             window.location.href="/reader_main.html";
+
+
                         }
                     }
                 });
             }
         })
+
     </script>
 </div>
 
