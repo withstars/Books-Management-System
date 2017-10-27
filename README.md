@@ -22,7 +22,6 @@
    默认端口号为9000。可在pom.xml中修改。
 9. 待服务器启动完毕后，在浏览器地址栏输入 http://localhost:9000 进入该系统。
 ### 项目截图
-<img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/7.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/1.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/2.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/3.PNG">
