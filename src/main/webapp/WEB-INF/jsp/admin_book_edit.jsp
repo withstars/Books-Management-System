@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>编辑《 ${detail.name}》</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" ></script>
 </head>
 <body>
 <nav  style="position:fixed;z-index: 999;width: 100%" class="navbar navbar-default" role="navigation">
