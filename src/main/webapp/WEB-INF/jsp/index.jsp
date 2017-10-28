@@ -17,8 +17,8 @@
     <style>
         #myCarousel{
             margin-left: 2%;
-            width: 65%;
-            height: 75%;
+            width: 60%;
+            height: 70%;
             float: left;
             z-index: 999;
             display: inline;
@@ -26,7 +26,7 @@
         #login{
             float: left;
            height: 50%;
-            width: 18%;
+            width: 23%;
             margin-left: 6%;
             margin-top: 6%;
             display: inline;
@@ -199,26 +199,31 @@
        data-slide="next">&rsaquo;
     </a>
 </div>
-<div  id="login">
-    <div class="form-group">
-        <label for="id">用户名</label>
-        <input type="text" class="form-control" id="id" placeholder="请输入用户名">
+<div class="panel panel-default" id="login">
+    <div class="panel-heading" style="background-color: #fff">
+        <h3 class="panel-title">请登录</h3>
     </div>
-    <div class="form-group">
-        <label for="passwd">密码</label>
-        <input type="password" class="form-control" id="passwd" placeholder="请输入密码">
-    </div>
-    <div class="checkbox text-left">
-        <label>
-            <input type="checkbox" id="remember">记住密码
-        </label>
-        <a style="margin-left: 100px" href="#">忘记密码?</a>
-    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label for="id">用户名</label>
+            <input type="text" class="form-control" id="id" placeholder="请输入用户名">
+        </div>
+        <div class="form-group">
+            <label for="passwd">密码</label>
+            <input type="password" class="form-control" id="passwd" placeholder="请输入密码">
+        </div>
+        <div class="checkbox text-left">
+            <label>
+                <input type="checkbox" id="remember">记住密码
+            </label>
+            <a style="margin-left: 100px" href="#">忘记密码?</a>
+        </div>
 
         <p style="text-align: right;color: red;position: absolute" id="info"></p><br/>
         <button id="loginButton"  class="btn btn-primary  btn-block">登陆
         </button>
     </div>
+</div>
     <script>
         $("#id").keyup(
             function () {
