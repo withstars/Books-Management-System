@@ -14,7 +14,7 @@
     <script src="js/bootstrap.min.js" ></script>
     <style>
         body{
-            background-color: ;
+            background-color: rgb(240,242,245);
         }
     </style>
 </head>
