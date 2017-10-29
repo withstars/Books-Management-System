@@ -10,17 +10,9 @@
 ### 如何使用
 1. *git clone https://github.com/withstars/Books-Management-System* <br/>
 	*cd  Books-Management-System*<br/>
-	或<br/>
-	下载zip文件<br/>
-	解压文件，进入解压后的文件夹 <br/>
-2. 启动数据库服务,将sql文件导入数据库。
-3. 用IDEA打开解压后的文件夹。
-4. 配置src\main\resources\book-context.xml中的数据库设置项。
-5. 单击IDEA右边侧栏的Maven Projects选项卡，将弹出Maven项目的管理窗口。
-7. 单击管理窗口的刷新按钮，等待依赖下载完毕。
-8. 点击Maven Projects\book\Plugins\jetty\jetty:run启动jetty服务器。<br/>
-   默认端口号为9000。可在pom.xml中修改。
-9. 待服务器启动完毕后，在浏览器地址栏输入 http://localhost:9000 进入该系统。
+2. 导入并配置数据库.
+3. 下载依赖,启动Maven服务器.默认端口号9000.
+4. 进入 http://localhost:9000
 ### 项目截图
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/1.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/2.PNG">
