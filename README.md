@@ -11,6 +11,9 @@
 2. 导入并配置数据库.
 3. 下载依赖,启动Jetty服务,默认端口号`9000`.
 4. 进入 http://localhost:9000
+### 说明
+1. 如果使用该项目出现问题，请联系我 withstars@126.com
+2. 如果该项目对您有帮助,请star鼓励我
 ### 项目截图
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/1.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/2.PNG">
