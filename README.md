@@ -14,9 +14,9 @@
 ### 说明
 1. 如果使用该项目出现问题，请联系我 withstars@126.com
 2. 如果该项目对您有帮助,请star鼓励我
-### 相关项目:整合SSM 个人博客系统
+### 下一步:整合SSM 个人博客系统
 *https://github.com/withstars/Blog-System*
-### 项目截图
+### 本项目截图
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/1.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/2.PNG">
 <img src="https://github.com/ValueStar/Books-Management-System/blob/master/preview/3.PNG">
