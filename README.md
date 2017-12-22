@@ -5,7 +5,7 @@
 本图书管理系统基于spring,spring mvc,数据库为mysql。前端使用了Bootstrap。 
 ### 系统功能
 该系统实现读者和管理员登陆，图书的增删改查，读者的增删改查，借还图书，密码修改，卡号挂失，超期提醒等功能。
-### 如何使用(推荐使用IDEA)
+### 如何使用
 1. *git clone https://github.com/withstars/Books-Management-System* <br/>
 	*cd  Books-Management-System*<br/>
 2. 导入数据库.<br/>
