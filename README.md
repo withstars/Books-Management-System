@@ -9,10 +9,9 @@
 1. *git clone https://github.com/withstars/Books-Management-System* <br/>
 	*cd  Books-Management-System*<br/>
 2. 导入并配置数据库.
-3. maven下载依赖.
-4. maven build该项目.
-5. 启动Jetty服务,默认端口号`9000`.<br/>
-6. 进入 http://localhost:9000
+3. Maven下载依赖.
+4. 启动Jetty服务器,默认监听端口号`9000`.
+5. 浏览器进入 http://localhost:9000
 ### 说明
 1. 如果使用该项目出现问题，请联系我 withstars@126.com
 2. 如果该项目对您有帮助,请star鼓励我
