@@ -8,7 +8,8 @@
 ### 如何使用(推荐使用IDEA)
 1. *git clone https://github.com/withstars/Books-Management-System* <br/>
 	*cd  Books-Management-System*<br/>
-2. 导入并配置数据库.
+2. 导入数据库.<br/>
+   配置*Books-Management-System/src/main/resources/book-context.xml*文件中的数据库设置.
 3. Maven下载依赖.
 4. 启动Jetty服务器,默认监听端口号`9000`.
 5. 浏览器进入 http://localhost:9000
