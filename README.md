@@ -9,11 +9,10 @@
 1. *git clone https://github.com/withstars/Books-Management-System* <br/>
 	*cd  Books-Management-System*<br/>
 2.  导入sql文件到数据库.<br/>
-3.  用IDEA打开该项目.
-4.  配置*Books-Management-System/src/main/resources/book-context.xml*文件中的数据库设置.
-5.  Maven下载依赖.<br/>
-4.  启动Jetty服务器,默认监听端口号`9000`.<br/>
-5.  浏览器进入 http://localhost:9000
+3.  配置*Books-Management-System/src/main/resources/book-context.xml*文件中的数据库设置.
+4.  Maven下载依赖.<br/>
+5.  启动Jetty服务器,默认监听端口号`9000`.<br/>
+6.  浏览器进入 http://localhost:9000
 ### 说明<br/>
 1. 如果使用该项目出现问题，请联系我 withstars@126.com
 2. 如果该项目对您有帮助,请star鼓励我
