@@ -5,18 +5,14 @@
 本图书管理系统基于spring,spring mvc,数据库为mysql。前端使用了Bootstrap。 
 ### 系统功能
 该系统实现读者和管理员登陆，图书的增删改查，读者的增删改查，借还图书，密码修改，卡号挂失，超期提醒等功能。
-### 如何使用(以下演示步骤集成开发环境为IDEA)
+### 如何使用
 1. *git clone https://github.com/withstars/Books-Management-System* <br/>
 	*cd  Books-Management-System*<br/>
 2.  导入sql文件到数据库.<br/>
 3.  用IDEA打开该项目.
 4.  配置*Books-Management-System/src/main/resources/book-context.xml*文件中的数据库设置.
-5.  Maven下载依赖.(点击IDEA右侧栏,Maven管理里的刷新键下载依赖,如下图)<br/>
-    <img src="https://github.com/withstars/Books-Management-System/blob/master/preview/htu_1.png">
-4.  启动Jetty服务器,默认监听端口号`9000`.(如下图)<br/>
-    <img src="https://github.com/withstars/Books-Management-System/blob/master/preview/htu_2.png"><br/>
-    启动成功后显示如下<br/>
-    <img src="https://github.com/withstars/Books-Management-System/blob/master/preview/htu_3.png">
+5.  Maven下载依赖.<br/>
+4.  启动Jetty服务器,默认监听端口号`9000`.<br/>
 5.  浏览器进入 http://localhost:9000
 ### 说明<br/>
 1. 如果使用该项目出现问题，请联系我 withstars@126.com
